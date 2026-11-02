@@ -107,3 +107,11 @@ test("review slideshow navigates, pauses and keeps inactive slides hidden", asyn
     await expect(carousel.getByRole("button", { name: /play slideshow/i })).toHaveAttribute("aria-pressed", "true");
   }
 });
+
+test("contact page has the map with Google Maps links", async ({ page }) => {
+  await page.goto("/contact-us/");
+  await expect(page.getByRole("link", { name: "Open in Google Maps" })).toHaveAttribute("href", /google\.com\/maps/);
+  await expect(page.getByRole("link", { name: "Directions" })).toHaveAttribute("href", /google\.com\/maps\/dir/);
+  await page.getByRole("link", { name: "Open in Google Maps" }).scrollIntoViewIfNeeded();
+  await expect(page.locator('iframe[title^="Map showing A2Z Auto Dismantlers"]')).toHaveCount(1);
+});

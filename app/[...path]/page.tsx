@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { AboutPage } from "@/components/AboutPage";
 import { ContactDetails, PageBanner } from "@/components/Blocks";
 import { JsonLd } from "@/components/JsonLd";
+import { MapEmbed } from "@/components/MapEmbed";
 import { Markdown } from "@/components/Markdown";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ServicePage } from "@/components/ServicePage";
@@ -69,6 +70,10 @@ function ContactView({ page }: { page: Page }) {
             </p>
           </div>
           <ContactDetails intro={page.getInTouch?.intro ?? ""} />
+        </div>
+        <div className="container mt-14">
+          <h2 className="sr-only">Find our yard</h2>
+          <MapEmbed />
         </div>
       </section>
     </>

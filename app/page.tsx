@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { QuoteForm } from "@/components/QuoteForm";
 import { RecentCards } from "@/components/RecentCards";
+import { StatCards } from "@/components/StatCards";
 import { Rich } from "@/components/Rich";
 import { formatDate, getPage, getPosts } from "@/lib/content";
 import { getRecent } from "@/lib/recent";
@@ -105,24 +106,7 @@ export default function HomePage() {
               decoding="async"
               className="relative w-full"
             />
-            <ul className="relative mt-2 grid grid-cols-2 gap-3 md:gap-4">
-              <li className="flex min-w-0 items-center gap-2 border-b-4 border-[#555] bg-sky p-3 md:gap-3 md:p-5">
-                <Icon name="medal" className="h-7 w-7 shrink-0 fill-current text-body" />
-                <span className="min-w-0 leading-tight [overflow-wrap:anywhere]">
-                  <span className="block font-heading text-xl font-bold text-body">100+</span>
-                  <span className="text-sm">
-                    <span aria-hidden="true">☆☆☆☆☆ </span>Reviews
-                  </span>
-                </span>
-              </li>
-              <li className="flex min-w-0 items-center gap-2 border-b-4 border-[#555] bg-sky p-3 md:gap-3 md:p-5">
-                <Icon name="carFill" className="h-7 w-7 shrink-0 fill-current text-body" />
-                <span className="min-w-0 leading-tight [overflow-wrap:anywhere]">
-                  <span className="block font-heading text-xl font-bold text-body">10000+</span>
-                  <span className="text-sm">Cars/Vans/Utes/Trucks Bought</span>
-                </span>
-              </li>
-            </ul>
+            <StatCards />
           </div>
           <div>
             <Eyebrow>About us</Eyebrow>

@@ -23,6 +23,10 @@ const icons = {
   playFill: ["play", "fill"],
   caretLeft: ["caret-left", "bold"],
   sealCheck: ["seal-check", "fill"],
+  google: ["google-logo", "bold"],
+  carSide: ["car-profile", "fill"],
+  vanFill: ["van", "fill"],
+  truckTrailer: ["truck-trailer", "fill"],
 };
 
 const out = {};

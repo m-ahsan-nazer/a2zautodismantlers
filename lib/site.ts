@@ -26,6 +26,14 @@ export const site = {
     country: "NZ",
   },
   foundingYear: 2008,
+  /** Public Google Business Profile link (reviews), supplied by A2Z. */
+  googleReviewsUrl: "https://share.google/hxI7w90kWu59V2UPm",
+  /** As shown on Google Maps (Nov 2026). Update when it changes; never show a higher rating. */
+  googleRating: { value: 4.2, countLabel: "120+" },
+  /** Google Maps search for the business listing, and the embed used on the contact page. */
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=A2Z+Auto+Dismantlers+Wainoni+Road+Christchurch",
+  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=A2Z+Auto+Dismantlers+Wainoni+Road+Christchurch",
+  mapEmbedUrl: "https://www.google.com/maps?q=A2Z+Auto+Dismantlers,+122+Wainoni+Road,+Avondale,+Christchurch+8061&z=15&output=embed",
   nzbn: "9429030335448",
 } as const;
 

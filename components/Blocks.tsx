@@ -5,6 +5,7 @@ import { fullAddress, site } from "@/lib/site";
 import { A2ZHeadset, Icon } from "./Icon";
 import type { IconName } from "./icon-paths";
 import { QuoteForm } from "./QuoteForm";
+import { RatingStars } from "./RatingStars";
 import { ReviewCarousel } from "./ReviewCarousel";
 import { reviewsFor } from "@/lib/reviews";
 import { Rich } from "./Rich";
@@ -177,9 +178,6 @@ export function Feature({ data }: { data: NonNullable<PageData["feature"]> }) {
   );
 }
 
-/** Public Google Business Profile link supplied by A2Z. */
-const GOOGLE_REVIEWS_URL = "https://share.google/hxI7w90kWu59V2UPm";
-
 export function Testimonials({ data }: { data: NonNullable<PageData["testimonials"]> }) {
   const reviews = reviewsFor(data.featured);
   return (
@@ -205,18 +203,14 @@ export function Testimonials({ data }: { data: NonNullable<PageData["testimonial
           </h2>
           {data.intro && <p className="mt-4 text-lg text-white/85">{data.intro}</p>}
           <div className="mt-8 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 backdrop-blur">
-            <span className="font-heading text-4xl font-bold text-white">100+</span>
+            <span className="font-heading text-4xl font-bold text-white">{site.googleRating.value.toFixed(1)}</span>
             <span className="leading-tight">
-              <span className="flex gap-0.5 text-[#fbbc04]" aria-hidden="true">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <Icon key={i} name="starFill" className="h-4 w-4 fill-current" />
-                ))}
-              </span>
-              <span className="mt-1 block text-sm font-semibold text-white/90">reviews from happy sellers</span>
+              <RatingStars value={site.googleRating.value} className="h-4 w-4" />
+              <span className="mt-1 block text-sm font-semibold text-white/90">from {site.googleRating.countLabel} Google reviews</span>
             </span>
           </div>
           <p className="mt-6">
-            <a href={GOOGLE_REVIEWS_URL} rel="noopener" target="_blank" className="inline-flex items-center gap-1.5 font-semibold text-white underline decoration-amber-300 decoration-2 underline-offset-4 hover:text-amber-200">
+            <a href={site.googleReviewsUrl} rel="noopener" target="_blank" className="inline-flex items-center gap-1.5 font-semibold text-white underline decoration-amber-300 decoration-2 underline-offset-4 hover:text-amber-200">
               Read all our reviews on Google
               <Icon name="caretRight" className="h-3.5 w-3.5 fill-current" />
             </a>

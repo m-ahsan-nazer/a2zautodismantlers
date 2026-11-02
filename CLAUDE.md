@@ -51,6 +51,10 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
   fed by `content/reviews.md` (14 reviews: confirmed Google 5-star ones carry stars/dates; older
   site testimonials show as "Customer testimonial"). Parts-focused Google reviews deliberately left out.
 
+- 2026-11-02: Homepage proof cards redesigned (Google rating card with real 4.2 stars + 120+
+  reviews; navy 10,000+ vehicles card). Rating lives in `site.googleRating` (never round up).
+  Contact page gets a Google Map that loads only when scrolled into view, with address card fallback.
+
 ## Deploy notes
 - Amplify must use platform WEB (static). Fix: `aws amplify update-app --app-id <id> --platform WEB`.
   Done 2026-11-02 for the preview branch `claude/loving-dirac-fovu4e`; pushes auto-deploy.
