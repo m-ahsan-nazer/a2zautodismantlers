@@ -48,6 +48,7 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
 
 ## Deploy notes
 - Amplify must use platform WEB (static). Fix: `aws amplify update-app --app-id <id> --platform WEB`.
+  Done 2026-11-02 for the preview branch `claude/loving-dirac-fovu4e`; pushes auto-deploy.
 - Apply `infra/amplify-redirects.json` under Amplify > Rewrites and redirects before switching DNS.
 
 ## TODO
