@@ -8,7 +8,7 @@ import { getReviews } from "@/lib/reviews";
 const pages = getPages();
 const posts = getPosts();
 const metas = [
-  ...pages.map((p) => ({ id: p.path, title: p.title, description: p.description, keyword: p.keyword, h1: p.hero?.h1 ?? p.banner?.title ?? "" })),
+  ...pages.map((p) => ({ id: p.path, title: p.title, description: p.description, keyword: p.keyword, keyword2: p.secondaryKeyword, h1: p.hero?.h1 ?? p.banner?.title ?? "" })),
   ...posts.map((p) => ({ id: p.path, title: p.title, description: p.description, keyword: p.keyword, h1: p.title })),
 ];
 
@@ -22,17 +22,19 @@ describe("page metadata", () => {
     expect(new Set(metas.map((m) => m.title)).size).toBe(metas.length);
   });
   it("each keyword has exactly one owner", () => {
-    const kws = metas.map((m) => m.keyword).filter(Boolean);
+    const kws = metas.flatMap((m) => [m.keyword, "keyword2" in m ? m.keyword2 : undefined]).filter(Boolean);
     expect(new Set(kws).size).toBe(kws.length);
   });
   it("the homepage owns the wreckers terms in its title and h1", () => {
     const home = pages.find((p) => p.slug === "index")!;
     expect(home.keyword).toBe("christchurch wreckers");
-    expect(home.title.toLowerCase()).toContain("christchurch car wreckers");
+    expect(home.secondaryKeyword).toBe("auto dismantlers christchurch");
+    expect(home.title.toLowerCase()).toContain("christchurch car wreckers & auto dismantlers");
     expect(home.hero!.h1.toLowerCase()).toContain("wreckers");
+    expect(home.hero!.h1.toLowerCase()).toContain("auto dismantlers");
   });
-  it("no other page targets 'wreckers' in its title (avoids cannibalising the homepage)", () => {
-    const others = metas.filter((m) => m.id !== "/" && /\bwreckers?\b/i.test(m.title));
+  it("no other page targets 'wreckers' or 'dismantlers' in its title (avoids cannibalising the homepage)", () => {
+    const others = metas.filter((m) => m.id !== "/" && /\b(wreckers?|dismantlers?)\b/i.test(m.title.replace(/A2Z Auto Dismantlers/g, "")));
     expect(others.map((m) => m.id)).toEqual([]);
   });
   it("never mentions stolen vehicles in titles, descriptions, slugs or headings", () => {

@@ -59,8 +59,8 @@ export default function HomePage() {
         <span aria-hidden="true" className="absolute left-[7%] top-[62%] h-12 w-12 rounded-full bg-[#ffd8b8]/60" />
         <div className="container relative grid items-center gap-12 py-14 md:grid-cols-2 md:py-24">
           <div>
-            <h1 className="flex items-center gap-2 font-heading text-lg font-bold uppercase tracking-wide text-accent-deep md:text-xl">
-              <Icon name="play" className="h-4 w-4 fill-current text-navy" />
+            <h1 className="flex items-start gap-2 font-heading text-lg font-bold uppercase tracking-wide text-accent-deep md:text-xl">
+              <Icon name="play" className="mt-1.5 h-4 w-4 shrink-0 fill-current text-navy" />
               {hero.h1}
             </h1>
             {hero.tagline && <p className="h1 mt-1 font-heading font-bold text-navy">{hero.tagline}</p>}
@@ -110,7 +110,7 @@ export default function HomePage() {
           </div>
           <div>
             <Eyebrow>About us</Eyebrow>
-            <h2 className="h2">Christchurch Car Wreckers Since 2008</h2>
+            <h2 className="h2">Christchurch Car Wreckers &amp; Auto Dismantlers Since 2008</h2>
             <p className="mt-4">
               A2Z Auto Dismantlers has over 15 years of experience in auto dismantling and operates as a licensed second-hand car dealer in
               Christchurch. We buy all types of vehicles and pride ourselves on paying exactly what we quote, with no surprises.

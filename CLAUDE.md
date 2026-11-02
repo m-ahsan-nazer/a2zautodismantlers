@@ -20,9 +20,11 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
   navy #002448, accent #2a77ca/#286db6, orange #cb4a1f, sky #edf5ff). Em dashes replaced with
   commas/colons (content rule). Obvious typos fixed in non-quote copy ("Scarp", "hard eared").
   Customer testimonials are kept verbatim.
-- SEO focus: the homepage owns "christchurch wreckers" / "car wreckers" (title + h1). About page
-  owns "auto dismantlers christchurch" (already ranks page 1). No other page uses "wreckers" in its
-  title (tested). "Parts" is a negative keyword: never in titles, descriptions or h1s (tested).
+- SEO focus: the homepage owns BOTH "christchurch wreckers" and "auto dismantlers christchurch"
+  (title "Christchurch Car Wreckers & Auto Dismantlers | A2Z", h1, about heading, FAQs, footer
+  anchor on every page). About is a supporting page (h1 "About A2Z Auto Dismantlers", links home
+  with "Christchurch auto dismantlers"). No other page uses "wreckers"/"dismantlers" in its title
+  apart from the brand suffix (tested). "Parts" is a negative keyword: never in titles, descriptions or h1s (tested).
   About copy no longer says A2Z sells parts (contradicted the "We DO NOT sell car parts" notice).
 - Old URLs that 404 on WordPress but Google still lists: /cash-for-4wds/, /cash-for-trucks/,
   /locations/, /used-auto-parts/. Redirect them in Amplify (see `infra/amplify-redirects.json`).
@@ -57,6 +59,9 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
 
 - 2026-11-02: "How it works" rebuilt as an icon timeline (horizontal on desktop, vertical rail on
   phones) with step numbers and a call/quote CTA; used on home and all three service pages.
+
+- 2026-11-02: Homepage now targets wreckers AND auto dismantlers (approved); About demoted to
+  supporting page so the existing page-1 "auto dismantlers" ranking stays on the homepage.
 
 ## Deploy notes
 - Amplify must use platform WEB (static). Fix: `aws amplify update-app --app-id <id> --platform WEB`.

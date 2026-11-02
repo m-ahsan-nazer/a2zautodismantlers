@@ -20,6 +20,8 @@ export type PageData = {
   description: string;
   /** Primary keyword this page owns (one owner per term, enforced by tests). */
   keyword?: string;
+  /** Second term this page owns (homepage: wreckers + dismantlers). */
+  secondaryKeyword?: string;
   banner?: { title: string; image: "yard" | "tow-truck" };
   hero?: { eyebrow?: string; h1: string; tagline?: string; paragraphs: string[]; callLabel: string; form?: boolean };
   cards?: Section & { items: { id: string; icon: "car" | "truck" | "van"; title: string; text: string; link: Link }[] };

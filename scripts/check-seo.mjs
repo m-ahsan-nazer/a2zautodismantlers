@@ -26,7 +26,7 @@ for (const f of pages) {
   if ((html.match(/<h1[\s>]/g) || []).length !== 1) e("must have exactly one h1");
   if (!/<html lang="en-NZ"/.test(html)) e("html lang must be en-NZ");
   if (/\bparts?\b/i.test(`${title} ${desc} ${pick(html, /<h1[^>]*>([\s\S]*?)<\/h1>/) ?? ""}`)) e("title/description/h1 mentions parts (negative keyword)");
-  if (/\bwreckers?\b/i.test(title ?? "") && url !== "/") e("only the homepage may target 'wreckers' in its title");
+  if (url !== "/" && /\b(wreckers?|dismantlers?)\b/i.test((title ?? "").replace(/A2Z Auto Dismantlers/g, ""))) e("only the homepage may target 'wreckers' or 'dismantlers' in its title");
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try {
       const j = JSON.parse(m[1]);

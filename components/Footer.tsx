@@ -16,9 +16,9 @@ export function Footer() {
           <p className="text-sm">
             &copy; {year} {site.name}.{" "}
             <Link href="/" className="underline-offset-2 hover:underline">
-              Christchurch car wreckers
-            </Link>{" "}
-            and auto dismantlers.
+              Christchurch car wreckers and auto dismantlers
+            </Link>
+            .
           </p>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-4 md:pl-10">

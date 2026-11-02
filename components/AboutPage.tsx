@@ -24,7 +24,7 @@ export function AboutPage({ page }: { page: Page }) {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: page.path }])} />
-      <PageBanner title="About Us" asH1 />
+      <PageBanner title={page.banner?.title ?? "About Us"} asH1 />
       <section className="section bg-white">
         <div className="container grid items-center gap-12 md:grid-cols-2 md:gap-16">
           <div className="relative pl-4">
@@ -45,6 +45,13 @@ export function AboutPage({ page }: { page: Page }) {
               Our mission is to keep customers happy. In such a fast-paced industry, the prices have become much more competitive, but for the team
               at A2Z Auto Dismantlers, they value all customer relationships by offering affordable prices to ensure customers are never over
               charged.
+            </p>
+            <p className="mt-4">
+              Today we&apos;re{" "}
+              <Link href="/" className="font-semibold text-accent-deep underline underline-offset-2">
+                Christchurch auto dismantlers
+              </Link>{" "}
+              buying cars, vans, utes, trucks and 4WDs across Christchurch and Canterbury, with free removal and same-day payment.
             </p>
             <Link href="/contact-us/" className="btn-blue mt-7">
               For enquiries <Icon name="caretRight" className="h-3.5 w-3.5 fill-current" />
