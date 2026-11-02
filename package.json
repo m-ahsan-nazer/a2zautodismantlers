@@ -21,7 +21,8 @@
     "test:all": "npm run typecheck && npm test && npm run build && npm run test:links && npm run test:seo && npm run test:perf && npm run test:e2e",
     "brand": "node scripts/brand/build-og.mjs",
     "icons": "node scripts/build-icons.mjs",
-    "fonts": "node scripts/copy-fonts.mjs"
+    "fonts": "node scripts/copy-fonts.mjs",
+    "test:lambda": "python3 -m pytest -q infra/lambda"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

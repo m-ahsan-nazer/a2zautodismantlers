@@ -43,6 +43,13 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
   All pages built; 2 new blog posts (2026-02-17, 2026-09-15); /recently-bought/ with 40 cases.
   Unit, content, link, SEO and perf checks green.
 
+- 2026-11-02: e2e (35 tests, phone + desktop) green. Lighthouse mobile on all 13 pages: perf 97-100,
+  a11y/best practices/SEO 100 (local prod-like server). Lambda + 7 pytest tests. CI workflow added.
+
+## Deploy notes
+- Amplify must use platform WEB (static). Fix: `aws amplify update-app --app-id <id> --platform WEB`.
+- Apply `infra/amplify-redirects.json` under Amplify > Rewrites and redirects before switching DNS.
+
 ## TODO
-- e2e (Playwright) + Lighthouse runs; Lambda + pytest; CI workflow; Amplify redirects.
+- Deploy the quote Lambda and set NEXT_PUBLIC_QUOTE_ENDPOINT; apply redirects; IndexNow ping.
 - Confirm hours/email; Google reviews (GBP blocked from session) could replace/extend testimonials.
