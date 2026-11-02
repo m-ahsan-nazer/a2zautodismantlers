@@ -23,7 +23,7 @@ export default function RecentlyBoughtPage() {
           <div className="max-w-3xl">
             <h2 className="h2">What We Buy Every Week</h2>
             <p className="mt-4">
-              Blown head gaskets, failed gearboxes, cars that won&apos;t start, stolen and recovered cars, crash damage and vehicles that have sat
+              Blown head gaskets, failed gearboxes, cars that won&apos;t start, crash damage and vehicles that have sat
               unregistered for years. These are real vehicles Christchurch and Canterbury owners have recently sold to us, and why they decided not
               to fix them. Details are kept general to protect our customers&apos; privacy.
             </p>

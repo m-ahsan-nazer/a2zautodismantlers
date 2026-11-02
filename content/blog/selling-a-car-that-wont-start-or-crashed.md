@@ -1,7 +1,7 @@
 ---
-title: "Selling a Car That Won't Start, Was Stolen or Crashed"
-description: "Car won't start, stuck in a driveway, stolen and recovered, crashed without insurance or deregistered? What to do before you sell it to a wrecker."
-excerpt: "Non-runners, stolen and recovered cars, crash damage without insurance, deregistered vehicles and cars stranded out of town: how selling to a wrecker works."
+title: "Selling a Car That Won't Start, Is Crashed or Off the Road"
+description: "Car won't start, stuck in a driveway, crashed without insurance, deregistered or stranded out of town? What to know before selling it to a wrecker."
+excerpt: "Non-runners, crash damage without insurance, deregistered vehicles and cars stranded out of town: how selling to a wrecker works."
 date: 2026-09-15
 author: "A2Z Webmaster"
 keyword: "sell a car that won't start"
@@ -23,19 +23,9 @@ A car that won't start is not a problem for a wrecker. Our tow trucks collect no
 - **Have the keys ready** if you have them, even if the battery is dead.
 - **Don't buy a new battery just to sell it.** A Nissan Elgrand we were asked about needed a battery and had a flat tyre. Neither changes much for a wrecker.
 
-## The car was stolen, vandalised or broken into
-
-Several people contact us each month after their car has been stolen and recovered. Typical damage includes smashed windows, a broken ignition barrel, a trashed interior or a car left on the side of the road with a flat tyre. Sometimes the car ends up at a towing yard, and storage fees start adding up quickly.
-
-Things to know:
-
-- **Ownership must be clear.** As a licensed second-hand vehicle dealer, we are required to keep records of the vehicles we buy and make sure they are not stolen. Have your ID and proof of ownership ready.
-- **Tell us where the car is now.** If it's at a towing or storage yard, let us know which one so we can plan the collection.
-- **Ignition damage and missing keys are common.** Mention it when you ask for a quote so we bring the right gear.
-
 ## It was in a crash and insurance won't cover it
 
-Some of the hardest stories we hear are crashes without valid insurance, like a car crashed by an unlicensed driver or a parked car hit by a stolen vehicle. Others are insurance write-offs where the owner is left with the wreck.
+Some of the hardest stories we hear are crashes without valid insurance, like a car crashed by an unlicensed driver or a parked car hit by another driver who didn't stop. Others are insurance write-offs where the owner is left with the wreck.
 
 Accident damage, even chassis damage, doesn't stop us buying a car. A 2001 Toyota Hilux rear-ended hard enough to twist the chassis, and a 2012 Toyota written off after a rollover, are both cars we were asked to quote on. Photos of the damage help us give you an accurate price.
 
@@ -65,6 +55,7 @@ If you have already gone and the car is with a friend, contact us by email and e
 ## What we can't help with
 
 - **Financed vehicles.** We don't buy cars that still have money owing on them. Pay off the loan first.
+- **Vehicles without proof of ownership.** As a licensed second-hand vehicle dealer, we check ownership and keep records for every vehicle we buy. Have your ID and ownership details ready.
 - **Car parts.** We get asked for these a lot, but we don't sell car parts. Our [contact form](/contact-us/) is only for people who want to sell a vehicle.
 
 ## How to get a quote

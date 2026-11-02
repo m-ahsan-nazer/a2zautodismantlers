@@ -34,6 +34,9 @@ describe("page metadata", () => {
     const others = metas.filter((m) => m.id !== "/" && /\bwreckers?\b/i.test(m.title));
     expect(others.map((m) => m.id)).toEqual([]);
   });
+  it("never mentions stolen vehicles in titles, descriptions, slugs or headings", () => {
+    for (const m of metas) expect(`${m.id} ${m.title} ${m.description} ${m.h1} ${m.keyword ?? ""}`).not.toMatch(/stolen/i);
+  });
   it("never targets car parts (a negative keyword)", () => {
     for (const m of metas) expect(`${m.title} ${m.description} ${m.h1} ${m.keyword ?? ""}`).not.toMatch(/\bparts?\b/i);
   });
@@ -46,6 +49,10 @@ describe("copy rules", () => {
     const s = fs.readFileSync(f, "utf8");
     expect(s).not.toContain("—");
     expect(s).not.toMatch(/User's blog|User&#039;s blog|3\.105\.201\.141|wp-content|Scarp|hard eared/);
+  });
+  it("only the original 'we check it is not stolen' lines mention stolen vehicles", () => {
+    const allowed = ["content/blog/10-tips-for-selling-a-wrecked-vehicle-in-christchurch.md", "content/pages/privacy-policy.md"];
+    for (const f of files.filter((x) => !allowed.includes(x.split(path.sep).join("/")))) expect(fs.readFileSync(f, "utf8")).not.toMatch(/stolen/i);
   });
   it("only the 'we do not sell parts' notice talks about selling parts", () => {
     for (const f of files) expect(fs.readFileSync(f, "utf8")).not.toMatch(/sell (our )?(affordable )?(second hand |used )?(car |auto )?parts at|used auto parts/i);

@@ -9,7 +9,6 @@ items:
   - { month: "2026-10", type: car, vehicle: "Volkswagen Golf", year: "2001", area: "North Christchurch", problem: "Coolant leaking from the water pump.", reason: "Owner leaving the country and not wanting to repair it." }
   - { month: "2026-10", type: ute, vehicle: "Mitsubishi L200", year: "1992", area: "Christchurch", problem: "Not running. No transmission or cylinder head.", reason: "Owner wanted it gone by a set day." }
   - { month: "2026-10", type: car, vehicle: "Audi A3 1.8", year: "1998", area: "Canterbury high country", problem: "Thermostat stuck closed. Still runs.", reason: "Stranded out of town and owner had no time to fix it." }
-  - { month: "2026-10", type: car, vehicle: "Mitsubishi Mirage", year: "", area: "Christchurch", problem: "Stolen, damaged and recovered, then deregistered.", reason: "No funds to repair or re-register it." }
   - { month: "2026-10", type: car, vehicle: "Toyota Caldina wagon", year: "", area: "East Christchurch", problem: "Sat on the lawn for months. WOF and rego expired, now won't start.", reason: "Owner had bought another car." }
   - { month: "2026-10", type: car, vehicle: "Volkswagen Golf", year: "2014", area: "South Christchurch", problem: "Won't start and has transmission problems.", reason: "Repairs not worth it." }
   - { month: "2026-10", type: van, vehicle: "Honda Odyssey", year: "2004", area: "Christchurch", problem: "Tidy and drivable, but deregistered while the owner was overseas.", reason: "Re-registering wasn't worth the hassle." }
@@ -28,7 +27,6 @@ items:
   - { month: "2026-08", type: van, vehicle: "Mitsubishi L300 van", year: "2002", area: "North Christchurch", problem: "Starter motor failed.", reason: "Owner wanted a price rather than a repair bill." }
   - { month: "2026-08", type: suv, vehicle: "Ford Territory", year: "2007", area: "Christchurch", problem: "Starts and drives, but a bad rear wheel bearing and front driveshaft.", reason: "Owner wanted it gone." }
   - { month: "2026-07", type: ute, vehicle: "Isuzu D-Max 4WD", year: "2017", area: "Canterbury", problem: "Engine failed and it won't start.", reason: "Sold as is rather than rebuilt." }
-  - { month: "2026-07", type: car, vehicle: "Toyota Vitz", year: "2004", area: "East Christchurch", problem: "Stolen and trashed: rear smashed, broken window, flat tyre.", reason: "Needed it cleared from a towing yard quickly." }
   - { month: "2026-07", type: car, vehicle: "Ford Mondeo", year: "2004", area: "Christchurch", problem: "Suspected blown head gasket and power steering pump fault.", reason: "Too much to fix." }
   - { month: "2026-07", type: car, vehicle: "Honda Accord Euro", year: "", area: "Christchurch", problem: "Couldn't be moved due to a bad starter or alternator.", reason: "Owner wanted it towed away for free." }
   - { month: "2026-07", type: car, vehicle: "Subaru Outback", year: "2005", area: "Christchurch", problem: "Good condition but deregistered.", reason: "Not worth getting it back on the road." }

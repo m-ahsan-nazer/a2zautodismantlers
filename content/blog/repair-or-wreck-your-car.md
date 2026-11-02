@@ -63,7 +63,7 @@ You will usually get a better price if you:
 
 - **Tell us exactly what is wrong.** A mechanic's diagnosis or quote helps us price it accurately.
 - **Keep the car complete.** Cars that have had the engine, gearbox or wheels removed are worth less.
-- **Have your keys and proof of ownership ready.** We need to confirm the car is yours and is not financed or stolen.
+- **Have your keys and proof of ownership ready.** We need to confirm the car is yours and has no money owing on it.
 - **Don't spend money on it first.** There is no need to replace the battery or tyres just to sell it to us.
 
 ## Selling a broken car to A2Z
