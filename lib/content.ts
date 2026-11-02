@@ -25,7 +25,7 @@ export type PageData = {
   cards?: Section & { items: { id: string; icon: "car" | "truck" | "van"; title: string; text: string; link: Link }[] };
   process?: Section & { steps: { title: string; text: string }[] };
   feature?: { image: Img; heading: string; paragraphs: string[]; button?: Link; callLabel?: string };
-  testimonials?: Section & { image: "yard" | "crane-truck"; items: { quote: string; name: string }[] };
+  testimonials?: Section & { featured: string[] };
   why?: Section & { image: Img; paragraphs: string[]; points: { heading: string; text: string }[] };
   getInTouch?: { intro: string };
   faqs?: Section & { items: Faq[]; moreHeading: string; moreText: string; cta: Link };

@@ -47,13 +47,9 @@ feature:
   callLabel: "selling car? Call us"
 testimonials:
   eyebrow: "Testimonials"
-  heading: "We Buy Scrap Cars"
-  image: crane-truck
-  items:
-    - quote: "Our company would absolutely recommend these guys at A2Z Auto Dismantlers for any vehicle scrapping needs. They are super reliable and pay top dollars for any old cars. The friendly team will make the process hassle-free. A+ recommendation"
-      name: "Web Proud Ltd"
-    - quote: "Quick, easy and reliable communication from the team. Overall great service!"
-      name: "Pippi Orr"
+  heading: "Scrap Car Sellers Recommend A2Z"
+  intro: "Reliable pickups, top dollar for old cars and a hassle-free process, in our customers’ own words."
+  featured: ["Sam McCarthy", "Web Proud Ltd", "Ninj Crooks", "Pippi Orr"]
 getInTouch:
   intro: "Fill out the form below, and we’ll get back to you with a no-obligation offer with a price for your vehicle."
 ---

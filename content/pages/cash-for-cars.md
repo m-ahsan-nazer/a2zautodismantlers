@@ -48,13 +48,9 @@ feature:
   callLabel: "selling car? Call us"
 testimonials:
   eyebrow: "Testimonials"
-  heading: "Get Cash For Cars"
-  image: yard
-  items:
-    - quote: "Im glade i called a2z auto fast and top dollar was paid for 1989 Toyota corolla. A+++ recomanding them everyone"
-      name: "Rug Expo Ltd"
-    - quote: "Super friendly and helpful staff, Muhammad was a gentleman and I would gladly go back to use the services again."
-      name: "Theo Stewart"
+  heading: "Cash For Cars Customers Say It Best"
+  intro: "Top dollar, paid on the spot, with staff people actually enjoy dealing with."
+  featured: ["Sixto Masciotro", "Rug Expo Ltd", "Theo Stewart", "Damian"]
 why:
   eyebrow: "Why choose us"
   heading: "Why Choose A2Z for Cash For Cars in Christchurch?"

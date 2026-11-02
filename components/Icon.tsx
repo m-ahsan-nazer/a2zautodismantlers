@@ -1,7 +1,7 @@
 import { iconPaths, type IconName } from "./icon-paths";
 
 /** Icons repeated many times per page are rendered once in <IconSprite/> and referenced with <use>. */
-const SPRITE: IconName[] = ["headset", "caretRight", "radio", "phone", "pin"];
+const SPRITE: IconName[] = ["caretRight", "radio", "phone", "pin", "starFill"];
 
 export function Icon({ name, className = "ico" }: { name: IconName; className?: string }) {
   if (SPRITE.includes(name)) {
@@ -18,9 +18,24 @@ export function Icon({ name, className = "ico" }: { name: IconName; className?: 
   );
 }
 
+/** A2Z's own headset mark from the WordPress site (512x512 viewBox). */
+const A2Z_HEADSET =
+  "M452.028,222.199C447.087,131.883,361.062,59.733,256,59.733S64.913,131.883,59.972,222.199C25.745,224.683,0,242.372,0,264.533v34.133c0,23.927,29.986,42.667,68.267,42.667c4.719,0,8.533-3.814,8.533-8.533V230.4c0-84.693,80.393-153.6,179.2-153.6s179.2,68.907,179.2,153.6v98.867l-20.599,20.599h-17.664c8.115-20.659,12.664-43.401,12.664-67.32c0-93.585-68.907-169.719-153.6-169.719s-153.6,76.134-153.6,169.719S171.307,452.267,256,452.267c56.883,0,106.53-34.423,133.077-85.333h29.056c2.27,0,4.437-0.896,6.033-2.5l23.159-23.159c36.548-1.126,64.674-19.43,64.674-42.607v-34.133C512,242.372,486.255,224.683,452.028,222.199z M378.351,349.875h-79.684c0-14.114-11.486-25.6-25.6-25.6h-34.133c-14.114,0-25.6,11.486-25.6,25.6v17.067c0,14.114,11.486,25.6,25.6,25.6h34.133c14.114,0,25.6-11.486,25.6-25.6h71.014C345.19,408.038,303.394,435.2,256,435.2c-75.281,0-136.533-68.471-136.533-152.653S180.719,129.903,256,129.903s136.533,68.471,136.533,152.653C392.533,306.739,387.345,329.532,378.351,349.875z";
+
+export function A2ZHeadset({ className = "" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+      <use href="#i-a2z-headset" />
+    </svg>
+  );
+}
+
 export function IconSprite() {
   return (
     <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true" focusable="false">
+      <symbol id="i-a2z-headset" viewBox="0 0 512 512">
+        <path d={A2Z_HEADSET} />
+      </symbol>
       {SPRITE.map((n) => (
         <symbol key={n} id={`i-${n}`} viewBox="0 0 256 256">
           <path d={iconPaths[n]} />

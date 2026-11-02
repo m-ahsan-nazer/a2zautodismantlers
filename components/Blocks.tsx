@@ -2,9 +2,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Faq, Img, PageData } from "@/lib/content";
 import { fullAddress, site } from "@/lib/site";
-import { Icon } from "./Icon";
+import { A2ZHeadset, Icon } from "./Icon";
 import type { IconName } from "./icon-paths";
 import { QuoteForm } from "./QuoteForm";
+import { ReviewCarousel } from "./ReviewCarousel";
+import { reviewsFor } from "@/lib/reviews";
 import { Rich } from "./Rich";
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -19,10 +21,10 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
 export function CallBlock({ label, light = false, className = "" }: { label: string; light?: boolean; className?: string }) {
   return (
     <a href={site.phone.href} className={`group inline-flex items-center gap-4 ${className}`}>
-      <Icon name="headset" className={`h-11 w-11 fill-current ${light ? "text-white" : "text-accent-dark"}`} />
-      <span className="flex flex-col leading-tight">
-        <span className={`text-sm font-bold uppercase ${light ? "text-white" : "text-accent-deep"}`}>{label}</span>
-        <span className={`font-heading text-[22px] font-bold ${light ? "text-white" : "text-accent-dark"} group-hover:underline`}>
+      <A2ZHeadset className={`h-12 w-12 shrink-0 fill-current ${light ? "text-white" : "text-accent"}`} />
+      <span className="flex flex-col">
+        <span className={`text-[15px] font-semibold uppercase leading-tight tracking-[0.02em] ${light ? "text-white" : "text-accent-dark"}`}>{label}</span>
+        <span className={`font-heading text-[26px] font-bold leading-tight ${light ? "text-white" : "text-accent-dark"} group-hover:underline`}>
           {site.phone.display}
         </span>
       </span>
@@ -175,30 +177,52 @@ export function Feature({ data }: { data: NonNullable<PageData["feature"]> }) {
   );
 }
 
-const TESTIMONIAL_BG = { yard: "/images/yard-banner-1280.webp", "crane-truck": "/images/crane-truck-banner-1280.webp" } as const;
+/** Public Google Business Profile link supplied by A2Z. */
+const GOOGLE_REVIEWS_URL = "https://share.google/hxI7w90kWu59V2UPm";
 
 export function Testimonials({ data }: { data: NonNullable<PageData["testimonials"]> }) {
+  const reviews = reviewsFor(data.featured);
   return (
-    <section className="relative isolate overflow-hidden py-16 md:py-20" aria-labelledby="testimonials-heading">
-      <img src={TESTIMONIAL_BG[data.image]} alt="" width={1280} height={622} loading="lazy" decoding="async" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div className="absolute inset-0 -z-10 bg-navy/60" />
-      <div className="container">
-        <div className="text-center">
-          {data.eyebrow && <Eyebrow className="justify-center !text-white">{data.eyebrow}</Eyebrow>}
+    <section className="relative isolate overflow-hidden bg-navy py-20 md:py-28" aria-labelledby="testimonials-heading">
+      <img
+        src="/images/yard-banner-1280.webp"
+        alt=""
+        width={1280}
+        height={622}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-25 mix-blend-luminosity"
+      />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_20%,rgba(42,119,202,0.55),transparent_55%),radial-gradient(ellipse_at_90%_90%,rgba(203,74,31,0.35),transparent_50%),linear-gradient(180deg,rgba(0,36,72,0.82),rgba(0,20,40,0.95))]" />
+      <span aria-hidden="true" className="pointer-events-none absolute -left-6 top-6 -z-10 select-none font-heading text-[260px] font-bold leading-none text-white/[0.06] md:text-[380px]">
+        &ldquo;
+      </span>
+      <div className="container grid items-center gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
+        <div className="text-white">
+          {data.eyebrow && <Eyebrow className="!text-amber-300">{data.eyebrow}</Eyebrow>}
           <h2 id="testimonials-heading" className="h2 !text-white">
             {data.heading}
           </h2>
+          {data.intro && <p className="mt-4 text-lg text-white/85">{data.intro}</p>}
+          <div className="mt-8 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 backdrop-blur">
+            <span className="font-heading text-4xl font-bold text-white">100+</span>
+            <span className="leading-tight">
+              <span className="flex gap-0.5 text-[#fbbc04]" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Icon key={i} name="starFill" className="h-4 w-4 fill-current" />
+                ))}
+              </span>
+              <span className="mt-1 block text-sm font-semibold text-white/90">reviews from happy sellers</span>
+            </span>
+          </div>
+          <p className="mt-6">
+            <a href={GOOGLE_REVIEWS_URL} rel="noopener" target="_blank" className="inline-flex items-center gap-1.5 font-semibold text-white underline decoration-amber-300 decoration-2 underline-offset-4 hover:text-amber-200">
+              Read all our reviews on Google
+              <Icon name="caretRight" className="h-3.5 w-3.5 fill-current" />
+            </a>
+          </p>
         </div>
-        <ul className="mt-10 grid gap-6 md:grid-cols-2">
-          {data.items.map((t) => (
-            <li key={t.name} className="rounded-md bg-white/90 p-7 shadow-card backdrop-blur">
-              <figure>
-                <blockquote className="font-semibold text-navy">&ldquo;{t.quote}&rdquo;</blockquote>
-                <figcaption className="mt-4 font-heading font-bold text-navy">{t.name}</figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
+        <ReviewCarousel reviews={reviews} label={`${data.heading}: customer reviews`} />
       </div>
     </section>
   );

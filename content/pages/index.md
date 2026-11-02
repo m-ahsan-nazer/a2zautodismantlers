@@ -20,14 +20,10 @@ process:
     - title: "Get Paid For Your Car"
       text: "Prove ownership, handover car keys, and get paid. We take care of the paperwork."
 testimonials:
-  eyebrow: "Testimonials"
-  heading: "Wrecked Car Sellers Say"
-  image: yard
-  items:
-    - quote: "was happy selling my end of life vehicle here, a great negotiation and banter."
-      name: "Blue Stacks"
-    - quote: "Ricky was awesome and easy to deal with Was offered a fair price and the whole process was super simple."
-      name: "Morgan Sydney"
+  eyebrow: "Google reviews"
+  heading: "Real Reviews From Real Car Sellers"
+  intro: "Fair prices, no haggling, free pickup and a team that turns up on time. Here’s what Christchurch locals say after selling their cars to A2Z."
+  featured: ["Ninj Crooks", "Sixto Masciotro", "Damian", "Marin Begović", "Sharon Nichol"]
 faqs:
   heading: "Selling Your Car FAQ"
   intro: "Questions and answers for when wrecked car owners sell vehicle to Christchurch car yards."

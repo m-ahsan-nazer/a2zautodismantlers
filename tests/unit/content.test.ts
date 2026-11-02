@@ -3,6 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { BESPOKE, getPages, getPosts, wordCount } from "@/lib/content";
 import { getRecent } from "@/lib/recent";
+import { getReviews } from "@/lib/reviews";
 
 const pages = getPages();
 const posts = getPosts();
@@ -44,7 +45,7 @@ describe("page metadata", () => {
 
 describe("copy rules", () => {
   const files = ["pages", "blog"].flatMap((d) => fs.readdirSync(path.join("content", d)).map((f) => path.join("content", d, f)));
-  files.push("content/recently-bought.md");
+  files.push("content/recently-bought.md", "content/reviews.md");
   it.each(files)("%s has no em dashes or WordPress leftovers", (f) => {
     const s = fs.readFileSync(f, "utf8");
     expect(s).not.toContain("—");
@@ -94,6 +95,22 @@ describe("recently bought (anonymised customer cases)", () => {
       expect(i.month).toMatch(/^\d{4}-\d{2}$/);
       expect(i.area.length).toBeLessThan(30);
     }
+  });
+});
+
+describe("reviews", () => {
+  const reviews = getReviews();
+  it("has real reviews with names and no parts-focused copy", () => {
+    expect(reviews.length).toBeGreaterThanOrEqual(10);
+    for (const r of reviews) {
+      expect(r.name).toBeTruthy();
+      expect(r.quote.length).toBeGreaterThan(10);
+      expect(r.quote).not.toMatch(/any parts|posted it/i);
+      if (r.rating !== undefined) expect(r.source).toBe("google");
+    }
+  });
+  it("every featured reviewer exists", () => {
+    for (const p of pages) for (const n of p.testimonials?.featured ?? []) expect(reviews.some((r) => r.name === n)).toBe(true);
   });
 });
 

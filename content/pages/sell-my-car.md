@@ -47,13 +47,9 @@ feature:
   callLabel: "selling car? Call us"
 testimonials:
   eyebrow: "Testimonials"
-  heading: "We Buy Cars"
-  image: crane-truck
-  items:
-    - quote: "Sold my Mazda Demio that couldn’t pass the WOF, for a decent price by a decent gentleman (Tony). I was given a fair and firm quote with no lowballing or haggling the price. The whole process was quick and pleasant."
-      name: "Marin Begović"
-    - quote: "They gave a reasonable deal for my car and made the process quick and easy. Highly recommend."
-      name: "Jack Richards"
+  heading: "Car Sellers Who Chose A2Z"
+  intro: "Fair and firm quotes with no lowballing. Here’s how selling to us went for people just like you."
+  featured: ["Marin Begović", "Jack Richards", "Damian"]
 getInTouch:
   intro: "Fill out the form below, and we’ll get back to you with a no-obligation offer with a price for your vehicle."
 ---

@@ -46,6 +46,11 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
 - 2026-11-02: e2e (35 tests, phone + desktop) green. Lighthouse mobile on all 13 pages: perf 97-100,
   a11y/best practices/SEO 100 (local prod-like server). Lambda + 7 pytest tests. CI workflow added.
 
+- 2026-11-02: September post retitled/re-slugged without "stolen" (A2Z never buys stolen cars;
+  tested). A2Z headset icon in call blocks. Testimonials replaced by an accessible review slideshow
+  fed by `content/reviews.md` (14 reviews: confirmed Google 5-star ones carry stars/dates; older
+  site testimonials show as "Customer testimonial"). Parts-focused Google reviews deliberately left out.
+
 ## Deploy notes
 - Amplify must use platform WEB (static). Fix: `aws amplify update-app --app-id <id> --platform WEB`.
   Done 2026-11-02 for the preview branch `claude/loving-dirac-fovu4e`; pushes auto-deploy.
@@ -53,4 +58,4 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
 
 ## TODO
 - Deploy the quote Lambda and set NEXT_PUBLIC_QUOTE_ENDPOINT; apply redirects; IndexNow ping.
-- Confirm hours/email; Google reviews (GBP blocked from session) could replace/extend testimonials.
+- Confirm hours/email. Confirm whether the older site testimonials are 5-star Google reviews (then add rating).

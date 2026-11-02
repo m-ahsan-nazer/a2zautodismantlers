@@ -86,3 +86,24 @@ test("404 page is noindex", async ({ page }) => {
   expect(res?.status()).toBe(404);
   await expect(page.locator('meta[name="robots"]').first()).toHaveAttribute("content", /noindex/);
 });
+
+test("review slideshow navigates, pauses and keeps inactive slides hidden", async ({ page }) => {
+  await page.goto("/");
+  const carousel = page.locator('[aria-roledescription="carousel"]');
+  await carousel.scrollIntoViewIfNeeded();
+  const slides = carousel.locator('[aria-roledescription="slide"]');
+  expect(await slides.count()).toBeGreaterThanOrEqual(10);
+  await expect(slides.nth(0)).toHaveAttribute("aria-hidden", "false");
+  await expect(slides.nth(1)).toHaveAttribute("aria-hidden", "true");
+  // Every review is in the HTML for search engines.
+  expect(await carousel.locator("blockquote").count()).toBe(await slides.count());
+  await carousel.getByRole("button", { name: "Next review" }).click();
+  await expect(slides.nth(1)).toHaveAttribute("aria-hidden", "false");
+  await carousel.getByRole("button", { name: "Previous review" }).click();
+  await expect(slides.nth(0)).toHaveAttribute("aria-hidden", "false");
+  const pause = carousel.getByRole("button", { name: /pause slideshow/i });
+  if (await pause.count()) {
+    await pause.click();
+    await expect(carousel.getByRole("button", { name: /play slideshow/i })).toHaveAttribute("aria-pressed", "true");
+  }
+});

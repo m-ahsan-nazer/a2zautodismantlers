@@ -17,6 +17,12 @@ const icons = {
   menu: ["list", "bold"],
   close: ["x", "bold"],
   play: ["play", "bold"],
+  starFill: ["star", "fill"],
+  quotes: ["quotes", "fill"],
+  pause: ["pause", "fill"],
+  playFill: ["play", "fill"],
+  caretLeft: ["caret-left", "bold"],
+  sealCheck: ["seal-check", "fill"],
 };
 
 const out = {};

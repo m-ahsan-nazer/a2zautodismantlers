@@ -22,7 +22,7 @@ for (const file of walk("content").filter((f) => f.endsWith(".md"))) {
   const { data } = parsed;
   if (raw.includes("—")) err(file, "contains an em dash");
   if (/wp-content|3\.105\.201\.141|User's blog/.test(raw)) err(file, "contains WordPress leftovers");
-  if (!file.endsWith("recently-bought.md")) {
+  if (!/(recently-bought|reviews)\.md$/.test(file)) {
     if (!data.title) err(file, "missing title");
     if (!data.description) err(file, "missing description");
     else if (data.description.length < 110 || data.description.length > 155) err(file, `description is ${data.description.length} chars (110-155)`);
