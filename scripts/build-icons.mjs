@@ -27,6 +27,9 @@ const icons = {
   carSide: ["car-profile", "fill"],
   vanFill: ["van", "fill"],
   truckTrailer: ["truck-trailer", "fill"],
+  calendarCheck: ["calendar-check", "fill"],
+  handCoins: ["hand-coins", "fill"],
+  chatDots: ["chat-circle-dots", "fill"],
 };
 
 const out = {};

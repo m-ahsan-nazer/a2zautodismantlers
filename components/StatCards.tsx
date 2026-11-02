@@ -35,21 +35,21 @@ export function StatCards() {
           <Icon name="caretRight" className="h-3 w-3 fill-current transition group-hover:translate-x-0.5" />
         </a>
       </li>
-      <li className="group relative min-w-0 overflow-hidden rounded-xl border-b-4 border-orange bg-navy p-4 text-white shadow-[0_18px_40px_-12px_rgba(0,36,72,0.55)] transition duration-300 hover:-translate-y-1 md:p-6">
-        <Icon name="truckTrailer" className="pointer-events-none absolute -bottom-6 -right-6 h-28 w-28 fill-current text-white/[0.06] md:h-36 md:w-36" />
+      <li className="group relative min-w-0 overflow-hidden rounded-xl border-b-4 border-orange bg-[linear-gradient(160deg,#ffffff_0%,#edf5ff_70%)] p-4 text-navy shadow-[0_18px_40px_-12px_rgba(0,36,72,0.35)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 md:p-6">
+        <Icon name="truckTrailer" className="pointer-events-none absolute -bottom-6 -right-6 h-28 w-28 fill-current text-accent/[0.08] md:h-36 md:w-36" />
         <span className="relative font-heading text-[30px] font-bold leading-none md:text-[42px]">
-          10,000<span className="text-amber-300">+</span>
+          10,000<span className="text-orange">+</span>
         </span>
         <p className="relative mt-2 font-heading text-[15px] font-bold leading-tight md:text-lg">Vehicles bought</p>
         <ul className="relative mt-3 flex gap-1.5 md:gap-2">
           {FLEET.map((f) => (
-            <li key={f.label} title={f.label} className="grid h-7 w-7 place-items-center rounded-full bg-white/10 ring-1 ring-white/15 md:h-9 md:w-9">
-              <Icon name={f.icon} className="h-4 w-4 fill-current text-amber-300 md:h-5 md:w-5" />
+            <li key={f.label} title={f.label} className="grid h-7 w-7 place-items-center rounded-full bg-white shadow-sm ring-1 ring-accent/20 md:h-9 md:w-9">
+              <Icon name={f.icon} className="h-4 w-4 fill-current text-orange md:h-5 md:w-5" />
               <span className="sr-only">{f.label}</span>
             </li>
           ))}
         </ul>
-        <p className="relative mt-2 text-xs text-white/85 md:text-sm">Cars, vans, utes &amp; trucks</p>
+        <p className="relative mt-2 text-xs text-body md:text-sm">Cars, vans, utes &amp; trucks</p>
       </li>
     </ul>
   );

@@ -116,37 +116,48 @@ export function IconCards({ data }: { data: NonNullable<PageData["cards"]> }) {
   );
 }
 
-const ORDINALS = ["One", "Two", "Three", "Four"];
+const STEP_ICONS: IconName[] = ["chatDots", "calendarCheck", "handCoins"];
+const STEP_ACCENTS = ["border-accent-dark", "border-accent-dark", "border-orange"];
 
+/** "How it works": a timeline joined by a blue-to-orange line (vertical rail on phones, horizontal on desktop). */
 export function ProcessSteps({ data }: { data: NonNullable<PageData["process"]> }) {
   return (
-    <section className="section bg-white" aria-labelledby="process-heading">
+    <section className="section relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#edf5ff_100%)]" aria-labelledby="process-heading">
       <div className="container">
         <SectionHead eyebrow={data.eyebrow} heading={data.heading} id="process-heading" />
-        <p aria-hidden="true" className="mx-auto mt-5 grid h-16 w-16 place-items-center rounded-full bg-accent-dark font-heading text-lg font-bold text-white">
-          Call
-        </p>
-        <ol className="relative mx-auto mt-6 max-w-3xl space-y-6 md:space-y-0">
-          {data.steps.map((s, i) => {
-            const right = i % 2 === 1;
-            return (
-              <li key={s.title} className="grid items-center gap-4 md:grid-cols-[1fr_56px_1fr] md:gap-0 md:py-3">
-                <div className={`card relative overflow-hidden ${right ? "md:col-start-3 md:text-left" : "md:col-start-1 md:text-right"} md:row-start-1`}>
-                  <span aria-hidden="true" className="absolute -bottom-10 -left-10 h-24 w-28 rotate-45 bg-sky" />
-                  <h3 className="relative text-lg">{s.title}</h3>
-                  <p className="relative mt-2 text-[15px]">{s.text}</p>
-                </div>
-                <span aria-hidden="true" className="hidden h-full items-center justify-center md:col-start-2 md:row-start-1 md:flex">
-                  <span className="h-3 w-3 rounded-full bg-orange ring-[6px] ring-white" />
+        <ol className="relative mx-auto mt-12 grid max-w-5xl gap-8 md:mt-16 md:grid-cols-3 md:gap-8">
+          <span aria-hidden="true" className="absolute left-[16.66%] right-[16.66%] top-8 hidden h-1 rounded-full bg-[linear-gradient(90deg,#286db6,#cb4a1f)] md:block" />
+          {data.steps.map((s, i) => (
+            <li key={s.title} className="group relative grid grid-cols-[64px_1fr] items-start gap-5 md:grid-cols-1 md:grid-rows-[auto_1fr] md:justify-items-center md:gap-6">
+              {i < data.steps.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className={`absolute -bottom-8 left-[30px] top-16 w-1 md:hidden ${i === data.steps.length - 2 ? "bg-[linear-gradient(180deg,#286db6,#cb4a1f)]" : "bg-accent-dark"}`}
+                />
+              )}
+              <span className="relative z-10 grid h-16 w-16 place-items-center rounded-full bg-white text-accent-dark shadow-[0_10px_25px_-8px_rgba(0,36,72,0.45)] ring-4 ring-sky transition duration-300 group-hover:scale-110 group-hover:text-orange">
+                <Icon name={STEP_ICONS[i] ?? "check"} className="h-7 w-7 fill-current" />
+                <span aria-hidden="true" className="absolute -right-1 -top-1 grid h-6 w-6 place-items-center rounded-full bg-orange font-heading text-xs font-bold text-white ring-2 ring-white">
+                  {i + 1}
                 </span>
-                <p className={`font-heading font-bold text-navy md:row-start-1 ${right ? "md:col-start-1 md:pr-6 md:text-right" : "md:col-start-3 md:pl-6"}`}>
-                  <span className="sr-only">Step </span>
-                  {ORDINALS[i]}
-                </p>
-              </li>
-            );
-          })}
+              </span>
+              <div className={`rounded-xl border-t-4 ${STEP_ACCENTS[i] ?? "border-accent-dark"} bg-white p-6 shadow-card transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_20px_40px_-12px_rgba(0,36,72,0.25)] md:h-full md:w-full md:text-center`}>
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-accent-deep">Step {i + 1}</p>
+                <h3 className="mt-1 text-lg md:text-xl">{s.title}</h3>
+                <p className="mt-2 text-[15px]">{s.text}</p>
+              </div>
+            </li>
+          ))}
         </ol>
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+          <a href={site.phone.href} className="btn-orange">
+            <Icon name="phone" className="h-5 w-5 fill-current" />
+            Call {site.phone.display}
+          </a>
+          <Link href="/contact-us/" className="btn-outline">
+            Get a free quote online
+          </Link>
+        </div>
       </div>
     </section>
   );
