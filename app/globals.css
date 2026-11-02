@@ -4,9 +4,9 @@
 
 @layer base {
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-  body { @apply bg-white text-coal font-sans antialiased; }
-  h1, h2, h3 { @apply font-display font-bold uppercase tracking-wide leading-[1.05]; }
-  :focus-visible { outline: 3px solid #ffc20e; outline-offset: 2px; }
+  body { @apply bg-white font-sans text-[17px] leading-[1.7] text-body antialiased; }
+  h1, h2, h3, h4 { @apply font-heading font-bold text-navy; }
+  :focus-visible { outline: 3px solid #2a77ca; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -14,34 +14,29 @@
 }
 
 @layer components {
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-semibold transition-colors min-h-[48px]; }
-  .btn-amber { @apply btn bg-amber text-coal hover:bg-amber-dark; }
-  .btn-red { @apply btn bg-brand text-white hover:bg-brand-dark; }
-  .btn-ghost { @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-coal; }
-  .btn-dark { @apply btn bg-coal text-white hover:bg-coal-700; }
+  .h1 { @apply text-[35px] leading-[1.25] md:text-[44px]; }
+  .h2 { @apply text-[30px] leading-[1.35] md:text-[38px]; }
+  .h3 { @apply text-xl leading-snug md:text-2xl; }
+  .section { @apply py-16 md:py-24; }
+  .eyebrow { @apply mb-1 inline-flex items-center gap-1.5 text-[15px] uppercase tracking-wide text-accent-deep; }
+  .btn { @apply inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded px-5 py-2.5 font-bold transition-colors; }
+  .btn-orange { @apply btn bg-orange uppercase text-white hover:bg-orange-dark; }
+  .btn-blue { @apply btn bg-accent-dark text-white hover:bg-accent-deep; }
+  .btn-outline { @apply btn border-2 border-navy bg-white uppercase text-navy hover:bg-navy hover:text-white; }
+  .btn-submit { @apply btn w-full bg-submit uppercase text-white hover:bg-submit-dark; }
   .ico { @apply inline-block h-5 w-5 shrink-0 fill-current; }
-  .section { @apply py-14 md:py-20; }
-  .eyebrow { @apply mb-2 text-sm font-bold uppercase tracking-[0.14em] text-brand; }
-  .h2 { @apply text-3xl md:text-[2.6rem]; }
-  .card { @apply rounded-lg border border-line bg-white p-6 shadow-sm; }
-  .lead { @apply text-lg text-muted md:text-xl; }
-  .hero { @apply relative overflow-hidden bg-coal text-white; }
-  .hero-stripes { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.035) 0 14px, transparent 14px 28px); }
-  .tick { @apply flex gap-3; }
-  .field { @apply mt-1 block w-full rounded-md border border-[#8a8f98] bg-white px-3 py-2.5 text-coal placeholder:text-[#5f6670] focus:border-brand; }
-  .label { @apply block text-sm font-semibold text-coal; }
-  .err { @apply mt-1 text-sm font-medium text-brand-dark; }
-  .chip { @apply inline-block rounded-full border border-line bg-paper px-3 py-1 text-sm text-coal; }
-  .prose-a2z { @apply max-w-prose text-[1.0625rem] leading-relaxed text-coal; }
-  .prose-a2z h2 { @apply mt-10 mb-3 text-3xl; }
-  .prose-a2z h3 { @apply mt-8 mb-2 text-2xl; }
+  .card { @apply rounded-md bg-white p-7 shadow-card; }
+  .field { @apply block w-full rounded border border-[#8c96a3] bg-field px-4 py-3 text-[16px] text-navy placeholder:text-[#5f6773] focus:border-accent focus:bg-white; }
+  .err { @apply mt-1 text-sm font-semibold text-orange-dark; }
+  .sky-tint { background: linear-gradient(180deg, #edf5ff 0%, #f7fbff 100%); }
+  .diag { background: linear-gradient(115deg, #edf5ff 0%, #edf5ff 58%, #ffffff 58%); }
+  .banner-overlay { background: linear-gradient(rgba(0, 36, 72, 0.72), rgba(0, 36, 72, 0.72)); }
+  .prose-a2z { @apply max-w-prose; }
+  .prose-a2z h2 { @apply mb-3 mt-10 text-[26px] leading-snug md:text-[30px]; }
+  .prose-a2z h3 { @apply mb-2 mt-8 text-xl; }
   .prose-a2z p { @apply my-4; }
-  .prose-a2z ul { @apply my-4 list-disc pl-6 space-y-1; }
-  .prose-a2z ol { @apply my-4 list-decimal pl-6 space-y-1; }
-  .prose-a2z a { @apply font-semibold text-brand-dark underline underline-offset-2 hover:text-brand; }
-  .prose-a2z strong { @apply font-semibold; }
-  .prose-a2z table { @apply my-6 w-full border-collapse text-left text-base; }
-  .prose-a2z th { @apply border-b-2 border-coal py-2 pr-4 font-semibold; }
-  .prose-a2z td { @apply border-b border-line py-2 pr-4 align-top; }
-  .prose-a2z blockquote { @apply my-6 border-l-4 border-amber bg-paper px-5 py-3; }
+  .prose-a2z ul { @apply my-4 list-disc space-y-1 pl-6; }
+  .prose-a2z ol { @apply my-4 list-decimal space-y-1 pl-6; }
+  .prose-a2z a { @apply font-semibold text-accent-deep underline underline-offset-2 hover:text-navy; }
+  .prose-a2z strong { @apply font-bold text-navy; }
 }

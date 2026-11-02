@@ -1,34 +1,28 @@
-// Generates components/icons.tsx from Phosphor (MIT) bold SVGs.
+// Generates components/icons.tsx from Phosphor (MIT) SVGs.
 import fs from "node:fs";
 
 const icons = {
-  phone: "phone",
-  truck: "truck",
-  car: "car-profile",
-  jeep: "jeep",
-  money: "money",
-  recycle: "recycle",
-  pin: "map-pin",
-  clock: "clock",
-  check: "check-circle",
-  envelope: "envelope-simple",
-  menu: "list",
-  close: "x",
-  caret: "caret-down",
-  wrench: "wrench",
-  arrow: "arrow-right",
-  shield: "shield-check",
-  lightning: "lightning",
-  file: "file-text",
-  gear: "gear-six",
-  calendar: "calendar-blank",
-  handshake: "handshake",
-  leaf: "leaf",
+  headset: ["headset", "regular"],
+  phone: ["phone", "regular"],
+  pin: ["map-pin", "regular"],
+  caretRight: ["caret-right", "bold"],
+  caretDown: ["caret-down", "bold"],
+  car: ["car-profile", "regular"],
+  truck: ["truck", "fill"],
+  van: ["van", "regular"],
+  radio: ["radio-button", "bold"],
+  medal: ["medal", "fill"],
+  carFill: ["car", "fill"],
+  star: ["star", "regular"],
+  menu: ["list", "bold"],
+  close: ["x", "bold"],
+  play: ["play", "bold"],
 };
 
 const out = {};
-for (const [name, file] of Object.entries(icons)) {
-  const svg = fs.readFileSync(`node_modules/@phosphor-icons/core/assets/bold/${file}-bold.svg`, "utf8");
+for (const [name, [file, weight]] of Object.entries(icons)) {
+  const suffix = weight === "regular" ? "" : `-${weight}`;
+  const svg = fs.readFileSync(`node_modules/@phosphor-icons/core/assets/${weight}/${file}${suffix}.svg`, "utf8");
   const inner = svg.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "");
   const paths = [...inner.matchAll(/<path d="([^"]+)"\s*\/?>/g)].map((m) => m[1]);
   if (!paths.length) throw new Error(`no paths for ${file}`);

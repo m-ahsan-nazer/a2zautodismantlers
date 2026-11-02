@@ -1,28 +1,39 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CONDITIONS, isSpam, validateQuote, type QuoteErrors, type QuoteInput } from "@/lib/validate";
+import { EMPTY_QUOTE, isSpam, validateQuote, type QuoteErrors, type QuoteInput } from "@/lib/validate";
 import { site } from "@/lib/site";
 
 const ENDPOINT = process.env.NEXT_PUBLIC_QUOTE_ENDPOINT ?? "";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-const EMPTY: QuoteInput = { name: "", phone: "", email: "", suburb: "", vehicle: "", year: "", condition: "", message: "", company: "" };
+const FIELDS: { name: keyof QuoteInput; label: string; type?: string; autoComplete?: string; inputMode?: "tel" | "email" | "text" }[] = [
+  { name: "phone", label: "Contact Number", type: "tel", autoComplete: "tel", inputMode: "tel" },
+  { name: "plate", label: "License Plate Number", autoComplete: "off" },
+  { name: "address", label: "Address", autoComplete: "street-address" },
+  { name: "email", label: "Email Address", type: "email", autoComplete: "email", inputMode: "email" },
+];
 
-export function QuoteForm({ heading = "Get a free quote", idPrefix = "q" }: { heading?: string; idPrefix?: string }) {
+/**
+ * Quote form, same fields as the WordPress Contact Form 7 form. Posts JSON to the
+ * Lambda Function URL in NEXT_PUBLIC_QUOTE_ENDPOINT. If that is not set the form
+ * reports an error and points people to the phone number: it never fakes success.
+ */
+export function QuoteForm({ idPrefix, heading, headingLevel = 2 }: { idPrefix: string; heading?: string; headingLevel?: 2 | 3 }) {
   const [errors, setErrors] = useState<QuoteErrors>({});
   const [status, setStatus] = useState<Status>("idle");
+  const H = headingLevel === 2 ? "h2" : "h3";
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const input = Object.fromEntries(Object.keys(EMPTY).map((k) => [k, String(fd.get(k) ?? "")])) as QuoteInput;
+    const input = Object.fromEntries(Object.keys(EMPTY_QUOTE).map((k) => [k, String(fd.get(k) ?? "")])) as QuoteInput;
     const errs = validateQuote(input);
     setErrors(errs);
-    if (Object.keys(errs).length) {
-      const first = Object.keys(errs)[0];
+    const first = Object.keys(errs)[0];
+    if (first) {
       (form.elements.namedItem(first) as HTMLElement | null)?.focus();
       return;
     }
@@ -42,29 +53,22 @@ export function QuoteForm({ heading = "Get a free quote", idPrefix = "q" }: { he
         body: JSON.stringify({ ...input, page: window.location.pathname }),
       });
       if (!res.ok) throw new Error(String(res.status));
-      setStatus("sent");
       form.reset();
+      setStatus("sent");
     } catch {
       setStatus("error");
     }
   }
 
   const id = (n: string) => `${idPrefix}-${n}`;
-  const err = (k: keyof QuoteInput) =>
-    errors[k] ? (
-      <p id={id(`${k}-err`)} className="err">
-        {errors[k]}
-      </p>
-    ) : null;
-  const aria = (k: keyof QuoteInput) => (errors[k] ? { "aria-invalid": true, "aria-describedby": id(`${k}-err`) } : {});
 
   if (status === "sent") {
     return (
-      <div className="card text-coal" role="status">
-        <h2 className="text-3xl">Thanks, we&apos;ve got it</h2>
-        <p className="mt-3 text-muted">
-          We&apos;ll call you shortly with a cash offer. In a hurry? Call us on{" "}
-          <a className="font-semibold text-brand-dark underline" href={site.phone.href}>
+      <div className="rounded-md bg-white p-7 shadow-card" role="status">
+        <p className="font-heading text-2xl font-bold text-navy">Thank you for your message.</p>
+        <p className="mt-2">
+          We&apos;ll get back to you with a no-obligation offer. Need it sooner? Call{" "}
+          <a className="font-bold text-accent-deep underline" href={site.phone.href}>
             {site.phone.display}
           </a>
           .
@@ -74,85 +78,63 @@ export function QuoteForm({ heading = "Get a free quote", idPrefix = "q" }: { he
   }
 
   return (
-    <form id="quote" onSubmit={onSubmit} noValidate className="card scroll-mt-28 text-coal" aria-labelledby={id("heading")}>
-      <h2 id={id("heading")} className="text-3xl">
-        {heading}
-      </h2>
-      <p className="mt-1 text-sm text-muted">Tell us about the vehicle and we&apos;ll call with a cash offer.</p>
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className="label" htmlFor={id("name")}>
-            Your name <span aria-hidden="true">*</span>
+    <form onSubmit={onSubmit} noValidate aria-label={heading ?? "Request a quote"} className="space-y-3">
+      {heading && <H className="mb-4 text-2xl md:text-[28px]">{heading}</H>}
+      {FIELDS.map((f) => (
+        <div key={f.name}>
+          <label htmlFor={id(f.name)} className="sr-only">
+            {f.label}
+            {f.name === "phone" ? " (required)" : ""}
           </label>
-          <input className="field" id={id("name")} name="name" autoComplete="name" required {...aria("name")} />
-          {err("name")}
+          <input
+            id={id(f.name)}
+            name={f.name}
+            type={f.type ?? "text"}
+            className="field"
+            placeholder={f.label}
+            autoComplete={f.autoComplete}
+            inputMode={f.inputMode}
+            required={f.name === "phone"}
+            aria-invalid={errors[f.name] ? true : undefined}
+            aria-describedby={errors[f.name] ? id(`${f.name}-err`) : undefined}
+          />
+          {errors[f.name] && (
+            <p id={id(`${f.name}-err`)} className="err">
+              {errors[f.name]}
+            </p>
+          )}
         </div>
-        <div>
-          <label className="label" htmlFor={id("phone")}>
-            Phone <span aria-hidden="true">*</span>
-          </label>
-          <input className="field" id={id("phone")} name="phone" type="tel" autoComplete="tel" inputMode="tel" required {...aria("phone")} />
-          {err("phone")}
-        </div>
-        <div>
-          <label className="label" htmlFor={id("email")}>
-            Email (optional)
-          </label>
-          <input className="field" id={id("email")} name="email" type="email" autoComplete="email" {...aria("email")} />
-          {err("email")}
-        </div>
-        <div>
-          <label className="label" htmlFor={id("suburb")}>
-            Suburb or town
-          </label>
-          <input className="field" id={id("suburb")} name="suburb" autoComplete="address-level2" {...aria("suburb")} />
-          {err("suburb")}
-        </div>
-        <div>
-          <label className="label" htmlFor={id("vehicle")}>
-            Make and model <span aria-hidden="true">*</span>
-          </label>
-          <input className="field" id={id("vehicle")} name="vehicle" placeholder="e.g. Toyota Corolla" required {...aria("vehicle")} />
-          {err("vehicle")}
-        </div>
-        <div>
-          <label className="label" htmlFor={id("year")}>
-            Year
-          </label>
-          <input className="field" id={id("year")} name="year" inputMode="numeric" maxLength={4} {...aria("year")} />
-          {err("year")}
-        </div>
-        <div className="sm:col-span-2">
-          <label className="label" htmlFor={id("condition")}>
-            Condition
-          </label>
-          <select className="field" id={id("condition")} name="condition" defaultValue="" {...aria("condition")}>
-            <option value="">Choose one</option>
-            {CONDITIONS.map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
-          {err("condition")}
-        </div>
-        <div className="sm:col-span-2">
-          <label className="label" htmlFor={id("message")}>
-            Anything else?
-          </label>
-          <textarea className="field" id={id("message")} name="message" rows={3} {...aria("message")} />
-          {err("message")}
-        </div>
-        <div className="hidden" aria-hidden="true">
-          <label htmlFor={id("company")}>Company</label>
-          <input id={id("company")} name="company" tabIndex={-1} autoComplete="off" />
-        </div>
+      ))}
+      <div>
+        <label htmlFor={id("message")} className="sr-only">
+          Message
+        </label>
+        <textarea
+          id={id("message")}
+          name="message"
+          rows={4}
+          className="field"
+          placeholder="Message"
+          aria-invalid={errors.message ? true : undefined}
+          aria-describedby={errors.message ? id("message-err") : undefined}
+        />
+        {errors.message && (
+          <p id={id("message-err")} className="err">
+            {errors.message}
+          </p>
+        )}
       </div>
-      <button type="submit" className="btn-red mt-5 w-full text-lg" disabled={status === "sending"}>
-        {status === "sending" ? "Sending..." : "Get my cash offer"}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor={id("company")}>Company</label>
+        <input id={id("company")} name="company" tabIndex={-1} autoComplete="off" />
+      </div>
+      <button type="submit" className="btn-submit" disabled={status === "sending"}>
+        {status === "sending" ? "Sending" : "Send Message"}
       </button>
       <div aria-live="polite">
         {status === "error" && (
-          <p className="err mt-3">
-            Sorry, the form couldn&apos;t be sent. Please call us on{" "}
+          <p className="err">
+            Sorry, your message couldn&apos;t be sent. Please call us on{" "}
             <a className="underline" href={site.phone.href}>
               {site.phone.display}
             </a>
@@ -160,13 +142,6 @@ export function QuoteForm({ heading = "Get a free quote", idPrefix = "q" }: { he
           </p>
         )}
       </div>
-      <p className="mt-3 text-xs text-muted">
-        We only use your details to give you a quote. See our{" "}
-        <a href="/privacy-policy/" className="underline">
-          privacy policy
-        </a>
-        .
-      </p>
     </form>
   );
 }

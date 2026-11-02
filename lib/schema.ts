@@ -1,4 +1,4 @@
-import { absoluteUrl, fullAddress, site } from "./site";
+import { absoluteUrl, site } from "./site";
 import type { Faq, Post } from "./content";
 
 export const BUSINESS_ID = `${site.url}/#business`;
@@ -12,37 +12,36 @@ export function websiteSchema(): Json {
     "@type": "WebSite",
     "@id": WEBSITE_ID,
     name: site.name,
-    alternateName: "A2Z Auto Dismantlers Christchurch",
     url: `${site.url}/`,
     inLanguage: site.locale,
     publisher: { "@id": BUSINESS_ID },
   };
 }
 
-export const services = [
-  { name: "Car wrecking and auto dismantling", path: "/auto-dismantlers-christchurch/" },
+export const SERVICES = [
   { name: "Cash for cars", path: "/cash-for-cars/" },
-  { name: "Free scrap car removal", path: "/scrap-car-removal/" },
-  { name: "Cash for trucks", path: "/cash-for-trucks/" },
-  { name: "Cash for 4WDs", path: "/cash-for-4wds/" },
+  { name: "Scrap car removal", path: "/scrap-car-removal/" },
+  { name: "Sell my car", path: "/sell-my-car/" },
 ];
 
-export function businessSchema(areaNames: string[]): Json {
+/** Areas named on the site (cash-for-cars service areas). */
+export const AREAS_SERVED = ["Christchurch", "Selwyn District", "Waimakariri District", "Canterbury"];
+
+export function businessSchema(): Json {
   return {
     "@context": "https://schema.org",
     "@type": "AutomotiveBusiness",
-    additionalType: "https://en.wikipedia.org/wiki/Wrecking_yard",
     "@id": BUSINESS_ID,
     name: site.name,
     legalName: site.legalName,
+    slogan: site.tagline,
+    description: site.description,
     url: `${site.url}/`,
     logo: absoluteUrl("/logo-512.png"),
-    image: absoluteUrl("/og.jpg"),
-    description: site.description,
+    image: [absoluteUrl("/og.jpg"), absoluteUrl("/images/yard-banner-1920.webp")],
     telephone: site.phone.e164,
-    email: site.email,
     foundingDate: String(site.foundingYear),
-    priceRange: "Free removal",
+    founder: { "@type": "Person", name: "Talib Hassanian" },
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.street,
@@ -51,23 +50,13 @@ export function businessSchema(areaNames: string[]): Json {
       postalCode: site.address.postcode,
       addressCountry: site.address.country,
     },
-    geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
-    hasMap: site.mapsUrl,
-    openingHoursSpecification: site.hours.map((h) => ({
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: h.schema.map((d) => `https://schema.org/${d}`),
-      opens: h.opens,
-      closes: h.closes,
-    })),
-    areaServed: areaNames.map((name) => ({ "@type": "Place", name })),
-    makesOffer: services.map((s) => ({
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: s.name, url: absoluteUrl(s.path), areaServed: "Canterbury, New Zealand" },
-    })),
-    knowsAbout: ["Car wrecking", "Auto dismantling", "Vehicle recycling", "Scrap car removal"],
-    slogan: site.tagline,
+    areaServed: AREAS_SERVED.map((name) => ({ "@type": "Place", name })),
+    knowsAbout: ["Car wrecking", "Auto dismantling", "Scrap car removal", "Vehicle recycling"],
     identifier: { "@type": "PropertyValue", propertyID: "NZBN", value: site.nzbn },
-    disambiguatingDescription: `Located at ${fullAddress}`,
+    makesOffer: SERVICES.map((s) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: s.name, url: absoluteUrl(s.path), areaServed: "Christchurch and Canterbury, New Zealand" },
+    })),
   };
 }
 
@@ -75,24 +64,16 @@ export function breadcrumbSchema(items: { name: string; path: string }[]): Json 
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((it, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: it.name,
-      item: absoluteUrl(it.path),
-    })),
+    itemListElement: items.map((it, i) => ({ "@type": "ListItem", position: i + 1, name: it.name, item: absoluteUrl(it.path) })),
   };
 }
 
 export function faqSchema(faqs: Faq[]): Json {
+  const strip = (s: string) => s.replace(/\*\*(.+?)\*\*/g, "$1").replace(/\[(.+?)\]\((.+?)\)/g, "$1");
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: strip(f.q), acceptedAnswer: { "@type": "Answer", text: strip(f.a) } })),
   };
 }
 
@@ -116,7 +97,7 @@ export function blogPostingSchema(post: Post): Json {
     inLanguage: site.locale,
     mainEntityOfPage: absoluteUrl(post.path),
     url: absoluteUrl(post.path),
-    image: absoluteUrl("/og.jpg"),
+    image: absoluteUrl(post.image.src),
     author: { "@type": "Organization", name: site.name, url: `${site.url}/` },
     publisher: {
       "@type": "Organization",

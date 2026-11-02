@@ -1,0 +1,46 @@
+---
+# Anonymised from customer enquiries. NEVER add names, phone numbers, emails,
+# plates, street addresses or exact dates. Areas are broad (not suburbs) and
+# months only, so no case can be traced back to a person.
+items:
+  - { month: "2026-11", type: car, vehicle: "Subaru Legacy wagon", year: "2010", area: "East Christchurch", problem: "Rear bumper torn off after another car hit it. Otherwise runs fine.", reason: "No tools or space to fix it, and needed cash for another car." }
+  - { month: "2026-10", type: car, vehicle: "Subaru Forester", year: "2012", area: "Christchurch", problem: "Engine started knocking, stopped and won't restart.", reason: "Engine replacement would cost more than the car is worth." }
+  - { month: "2026-10", type: car, vehicle: "Subaru Outback 2.5", year: "2005", area: "Christchurch", problem: "Cambelt melted and a roller likely seized. Not driven since.", reason: "Too costly to repair on a high-kilometre car." }
+  - { month: "2026-10", type: car, vehicle: "Volkswagen Golf", year: "2001", area: "North Christchurch", problem: "Coolant leaking from the water pump.", reason: "Owner leaving the country and not wanting to repair it." }
+  - { month: "2026-10", type: ute, vehicle: "Mitsubishi L200", year: "1992", area: "Christchurch", problem: "Not running. No transmission or cylinder head.", reason: "Owner wanted it gone by a set day." }
+  - { month: "2026-10", type: car, vehicle: "Audi A3 1.8", year: "1998", area: "Canterbury high country", problem: "Thermostat stuck closed. Still runs.", reason: "Stranded out of town and owner had no time to fix it." }
+  - { month: "2026-10", type: car, vehicle: "Mitsubishi Mirage", year: "", area: "Christchurch", problem: "Stolen, damaged and recovered, then deregistered.", reason: "No funds to repair or re-register it." }
+  - { month: "2026-10", type: car, vehicle: "Toyota Caldina wagon", year: "", area: "East Christchurch", problem: "Sat on the lawn for months. WOF and rego expired, now won't start.", reason: "Owner had bought another car." }
+  - { month: "2026-10", type: car, vehicle: "Volkswagen Golf", year: "2014", area: "South Christchurch", problem: "Won't start and has transmission problems.", reason: "Repairs not worth it." }
+  - { month: "2026-10", type: van, vehicle: "Honda Odyssey", year: "2004", area: "Christchurch", problem: "Tidy and drivable, but deregistered while the owner was overseas.", reason: "Re-registering wasn't worth the hassle." }
+  - { month: "2026-09", type: car, vehicle: "Mazda Axela 2.2 diesel", year: "2014", area: "Christchurch", problem: "Starts and drives, but the turbo needs replacing.", reason: "Turbo replacement too expensive." }
+  - { month: "2026-09", type: suv, vehicle: "Ford Kuga", year: "", area: "Selwyn", problem: "Broken transmission. Could still be driven onto a trailer.", reason: "Gearbox repair not economical." }
+  - { month: "2026-09", type: car, vehicle: "Volkswagen Golf", year: "", area: "Christchurch", problem: "Needs a replacement engine. Sitting at a repair garage.", reason: "Engine swap cost more than the car was worth." }
+  - { month: "2026-09", type: car, vehicle: "Suzuki Aerio", year: "2001", area: "North Christchurch", problem: "Clutch failed.", reason: "Clutch replacement not worth it on an older car." }
+  - { month: "2026-09", type: car, vehicle: "Mercedes-Benz SLK 200", year: "2006", area: "West Christchurch", problem: "Not drivable, suspected timing chain failure.", reason: "Timing chain repair quote too high." }
+  - { month: "2026-09", type: van, vehicle: "Nissan Vanette", year: "", area: "Christchurch", problem: "Sat unused for a long time. Starter won't click.", reason: "Owner wanted a cash quote and free removal." }
+  - { month: "2026-09", type: suv, vehicle: "Mazda CX-5", year: "", area: "North Christchurch", problem: "Recurring fault that drains the battery every time it's switched off.", reason: "Owner had already moved overseas." }
+  - { month: "2026-09", type: car, vehicle: "Jaguar Sovereign", year: "2007", area: "Christchurch", problem: "Front strut gone and a coolant leak. No WOF or rego.", reason: "Repairs too costly for an older luxury car." }
+  - { month: "2026-08", type: car, vehicle: "Nissan Primera", year: "2001", area: "Christchurch", problem: "Straight body but a blown head gasket.", reason: "Head gasket repair not worth it." }
+  - { month: "2026-08", type: car, vehicle: "Hyundai Getz", year: "2004", area: "North Christchurch", problem: "Runs but burns oil.", reason: "Owner didn't want to keep topping it up." }
+  - { month: "2026-08", type: suv, vehicle: "Mitsubishi Outlander", year: "", area: "Christchurch", problem: "Blown motor.", reason: "Engine replacement too expensive." }
+  - { month: "2026-08", type: ute, vehicle: "Toyota Hilux 3.0 diesel", year: "2001", area: "Canterbury", problem: "Rear-ended in a crash. Rear chassis likely twisted.", reason: "Chassis repair uneconomic at 363,000 km." }
+  - { month: "2026-08", type: van, vehicle: "Mitsubishi L300 van", year: "2002", area: "North Christchurch", problem: "Starter motor failed.", reason: "Owner wanted a price rather than a repair bill." }
+  - { month: "2026-08", type: suv, vehicle: "Ford Territory", year: "2007", area: "Christchurch", problem: "Starts and drives, but a bad rear wheel bearing and front driveshaft.", reason: "Owner wanted it gone." }
+  - { month: "2026-07", type: ute, vehicle: "Isuzu D-Max 4WD", year: "2017", area: "Canterbury", problem: "Engine failed and it won't start.", reason: "Sold as is rather than rebuilt." }
+  - { month: "2026-07", type: car, vehicle: "Toyota Vitz", year: "2004", area: "East Christchurch", problem: "Stolen and trashed: rear smashed, broken window, flat tyre.", reason: "Needed it cleared from a towing yard quickly." }
+  - { month: "2026-07", type: car, vehicle: "Ford Mondeo", year: "2004", area: "Christchurch", problem: "Suspected blown head gasket and power steering pump fault.", reason: "Too much to fix." }
+  - { month: "2026-07", type: car, vehicle: "Honda Accord Euro", year: "", area: "Christchurch", problem: "Couldn't be moved due to a bad starter or alternator.", reason: "Owner wanted it towed away for free." }
+  - { month: "2026-07", type: car, vehicle: "Subaru Outback", year: "2005", area: "Christchurch", problem: "Good condition but deregistered.", reason: "Not worth getting it back on the road." }
+  - { month: "2026-07", type: car, vehicle: "Toyota", year: "2012", area: "South Christchurch", problem: "Insurance write-off after a rollover.", reason: "Owner wanted the best cash offer for the wreck." }
+  - { month: "2026-06", type: car, vehicle: "Holden Cruze", year: "2014", area: "Selwyn", problem: "Blown head gasket.", reason: "Repair cost close to the car's value." }
+  - { month: "2026-06", type: van, vehicle: "Nissan Elgrand", year: "2011", area: "East Christchurch", problem: "No WOF, rego on hold, flat battery and a flat tyre.", reason: "Owner no longer needed it." }
+  - { month: "2026-06", type: suv, vehicle: "BMW X5 V8", year: "2005", area: "North Christchurch", problem: "Suspected gearbox fault plus cosmetic damage.", reason: "Gearbox repair too expensive." }
+  - { month: "2026-06", type: car, vehicle: "Mazda6", year: "2006", area: "West Christchurch", problem: "Not running, possibly a flat battery or worse.", reason: "Owner couldn't afford to get it fixed." }
+  - { month: "2026-05", type: car, vehicle: "Ford Laser", year: "1988", area: "East Christchurch", problem: "Old and blocking a shared driveway.", reason: "Wanted it removed the same day." }
+  - { month: "2026-05", type: suv, vehicle: "Mitsubishi Pajero", year: "", area: "Christchurch", problem: "Failed its WOF with black smoke from the motor. Unused for a year.", reason: "Engine repair not worth it." }
+  - { month: "2026-05", type: car, vehicle: "Mazda Axela", year: "2006", area: "Christchurch", problem: "Transmission issues.", reason: "Gearbox repair not worth it." }
+  - { month: "2026-05", type: ute, vehicle: "Holden Rodeo", year: "1999", area: "Ashburton", problem: "Ute located out of town in Ashburton.", reason: "Owner needed collection arranged from Mid Canterbury." }
+  - { month: "2026-05", type: car, vehicle: "Mazda Atenza wagon", year: "2008", area: "Waimakariri", problem: "High kilometres (325,000 km) but still going.", reason: "Surplus to requirements." }
+  - { month: "2026-05", type: suv, vehicle: "Mitsubishi Outlander", year: "2010", area: "Christchurch", problem: "Several dashboard warning lights, though still driving.", reason: "Owner didn't want to pay for diagnostics and repairs." }
+---
