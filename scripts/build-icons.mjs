@@ -30,6 +30,8 @@ const icons = {
   calendarCheck: ["calendar-check", "fill"],
   handCoins: ["hand-coins", "fill"],
   chatDots: ["chat-circle-dots", "fill"],
+  gearSix: ["gear-six", "fill"],
+  recycle: ["recycle", "bold"],
 };
 
 const out = {};

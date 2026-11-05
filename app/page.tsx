@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { QuoteForm } from "@/components/QuoteForm";
 import { RecentCards } from "@/components/RecentCards";
 import { StatCards } from "@/components/StatCards";
+import { AreasCovered, MakesGrid, VehicleTypes, WreckersExplained } from "@/components/HomeSections";
 import { Rich } from "@/components/Rich";
 import { formatDate, getPage, getPosts } from "@/lib/content";
 import { getRecent } from "@/lib/recent";
@@ -188,6 +189,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      <VehicleTypes />
+
+      <MakesGrid />
+
       {recent.length > 0 && (
         <section className="section bg-white" aria-labelledby="recent-heading">
           <div className="container">
@@ -209,9 +214,13 @@ export default function HomePage() {
         </section>
       )}
 
+      <WreckersExplained />
+
       <Testimonials data={home.testimonials!} />
 
       <FaqGrid data={home.faqs!} />
+
+      <AreasCovered />
 
       {/* Blog */}
       <section className="section bg-white pt-0 md:pt-0" aria-labelledby="blog-heading">

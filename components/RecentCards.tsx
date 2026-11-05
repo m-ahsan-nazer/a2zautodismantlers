@@ -10,7 +10,7 @@ export function RecentCards({ items, headingLevel = 3 }: { items: RecentCase[]; 
   return (
     <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((c) => (
-        <li key={`${c.month}-${c.vehicle}-${c.area}`} className="flex flex-col rounded-md border border-line bg-white p-5 shadow-soft">
+        <li key={`${c.month}-${c.vehicle}-${c.area}`} className="recent-card">
           <div className="flex items-center gap-3">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sky text-accent-dark">
               <Icon name={TYPE_ICON[c.type]} className="h-6 w-6 fill-current" />

@@ -50,6 +50,14 @@ for (const f of pages) {
     prev = lvl;
   }
 }
+// The homepage must naturally cover every wreckers/dismantlers variation it targets.
+{
+  const home = fs.readFileSync("out/index.html", "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").toLowerCase();
+  const TERMS = ["auto dismantlers", "christchurch wreckers", "car wreckers", "auto wreckers", "truck wreckers", "van wreckers", "ute & 4wd wreckers", "toyota wreckers", "nissan wreckers", "mazda wreckers", "honda wreckers", "subaru wreckers", "mitsubishi wreckers"];
+  for (const t of TERMS) if (!home.includes(t)) errors.push(`/: homepage is missing the term "${t}"`);
+  const words = home.split(/\s+/).filter(Boolean).length;
+  if (words < 2000) errors.push(`/: homepage has only ${words} words (want 2000+)`);
+}
 for (const [d, urls] of owners) if (urls.length > 1) errors.push(`duplicate description on ${urls.join(", ")}: ${d.slice(0, 40)}`);
 for (const p of sitemap) if (!pages.some((f) => urlPathOf(f) === p)) errors.push(`sitemap URL has no page: ${p}`);
 

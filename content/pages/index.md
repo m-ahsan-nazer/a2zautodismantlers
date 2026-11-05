@@ -41,6 +41,12 @@ faqs:
       a: "No, you don’t need to tow your car. As Christchurch car wreckers and auto dismantlers, we offer free vehicle removal, so we’ll come to you."
     - q: "How do auto dismantlers pay for cars they buy?"
       a: "Most **auto dismantlers in Christchurch** pay **cash on pickup** or make a **same-day bank transfer** once the vehicle is collected. A2Z Auto Dismantlers offers both options."
+    - q: "Are auto dismantlers and car wreckers the same thing?"
+      a: "Yes. **Car wreckers**, **auto wreckers** and **auto dismantlers** all buy end-of-life, damaged and unwanted vehicles, dismantle them and recycle them. A2Z Auto Dismantlers is a licensed second-hand dealer and Christchurch car wrecker that buys every type of vehicle for cash."
+    - q: "Do you buy trucks, vans and utes as well as cars?"
+      a: "Yes. We're **truck wreckers**, **van wreckers** and ute wreckers as well as car wreckers. Vans and trucks often fetch more due to their larger engines and higher scrap value, and for trucks, vans and 4WDs we travel further afield across Canterbury and Otago."
+    - q: "Which car makes do Christchurch wreckers buy?"
+      a: "We buy every make: Toyota, Nissan, Mazda, Honda, Subaru, Mitsubishi, Holden, Ford, Suzuki, Hyundai, Kia, Volkswagen, Audi, BMW, Mercedes-Benz and more. Whether you're after **Toyota wreckers** or someone to take an old European car, A2Z gives you a cash offer with free removal."
   moreHeading: "Got more auto wrecking questions?"
   moreText: "Just fill out our contact form and we will respond ASAP."
   cta: { label: "Sell Vehicle", href: "/contact-us/" }

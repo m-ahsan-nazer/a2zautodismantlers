@@ -1,7 +1,7 @@
 import { iconPaths, type IconName } from "./icon-paths";
 
 /** Icons repeated many times per page are rendered once in <IconSprite/> and referenced with <use>. */
-const SPRITE: IconName[] = ["caretRight", "radio", "phone", "pin", "starFill"];
+const SPRITE: IconName[] = ["caretRight", "radio", "phone", "pin", "starFill", "quotes", "sealCheck", "carSide", "truck", "truckTrailer", "vanFill"];
 
 export function Icon({ name, className = "ico" }: { name: IconName; className?: string }) {
   if (SPRITE.includes(name)) {

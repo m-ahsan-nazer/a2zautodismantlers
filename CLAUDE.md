@@ -63,6 +63,12 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
 - 2026-11-02: Homepage now targets wreckers AND auto dismantlers (approved); About demoted to
   supporting page so the existing page-1 "auto dismantlers" ranking stays on the homepage.
 
+- 2026-11-05: Re-checked live WordPress (sitemap + WP REST API): all 8 pages + 2 posts exist here.
+  Homepage expanded to ~2,500 words: Car/Truck/Van/Ute wreckers, Wreckers for every make (models
+  from recently-bought data), wreckers vs dismantlers explainer, areas covered, 3 new FAQs.
+  check-seo enforces the keyword variations. Lighthouse all 13 pages: mobile 99-100, desktop 97-100,
+  a11y/BP/SEO 100.
+
 ## Deploy notes
 - Amplify must use platform WEB (static). Fix: `aws amplify update-app --app-id <id> --platform WEB`.
   Done 2026-11-02 for the preview branch `claude/loving-dirac-fovu4e`; pushes auto-deploy.

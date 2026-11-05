@@ -21,7 +21,7 @@ function monthLabel(ym?: string) {
 
 function Avatar({ name, size = "h-12 w-12 text-lg" }: { name: string; size?: string }) {
   return (
-    <span aria-hidden="true" className={`grid shrink-0 place-items-center rounded-full font-heading font-bold text-white ${size}`} style={{ background: avatarColour(name) }}>
+    <span aria-hidden="true" className={`avatar ${size}`} style={{ background: avatarColour(name) }}>
       {name.charAt(0).toUpperCase()}
     </span>
   );
@@ -111,7 +111,7 @@ export function ReviewCarousel({ reviews, label }: { reviews: Review[]; label: s
       {/* Story-style progress segments */}
       <div className="mb-5 flex gap-1.5" aria-hidden="true">
         {reviews.map((r, i) => (
-          <span key={r.name} className="h-1 flex-1 overflow-hidden rounded-full bg-white/20">
+          <span key={r.name} className="seg">
             {i < index && <span className="block h-full w-full bg-white" />}
             {i === index &&
               (autoplayOff ? (
@@ -140,23 +140,21 @@ export function ReviewCarousel({ reviews, label }: { reviews: Review[]; label: s
               aria-label={`${i + 1} of ${n}`}
               aria-hidden={!active}
               inert={!active}
-              className={`relative col-start-1 row-start-1 flex flex-col rounded-2xl bg-white p-7 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] transition-[opacity,transform,filter,visibility] duration-700 ease-out md:p-10 ${
-                active ? "visible translate-y-0 scale-100 opacity-100 blur-0" : "invisible translate-y-4 scale-[0.98] opacity-0 blur-[2px]"
-              }`}
+              className={`slide ${active ? "slide-on" : "slide-off"}`}
             >
-              <span aria-hidden="true" className="absolute -top-6 right-7 grid h-14 w-14 place-items-center rounded-full bg-orange text-white shadow-lg md:right-10">
+              <span aria-hidden="true" className="slide-quote-ico">
                 <Icon name="quotes" className="h-7 w-7 fill-current" />
               </span>
               <div className="flex flex-wrap items-center gap-3">
                 {r.rating === 5 ? <Stars /> : null}
-                <span className="rounded-full bg-sky px-3 py-0.5 text-xs font-bold uppercase tracking-wide text-accent-deep">
+                <span className="slide-tag">
                   {r.source === "google" ? `Google review${r.date ? ` · ${monthLabel(r.date)}` : ""}` : "Customer testimonial"}
                 </span>
               </div>
               <blockquote className={`mt-5 flex-1 font-heading font-semibold leading-snug text-navy ${long ? "text-lg md:text-xl" : "text-xl md:text-[26px]"}`}>
                 <p>&ldquo;{r.quote}&rdquo;</p>
               </blockquote>
-              <figcaption className="mt-7 flex items-center gap-4 border-t border-line pt-6">
+              <figcaption className="slide-cap">
                 <Avatar name={r.name} />
                 <span className="leading-tight">
                   <span className="block font-heading text-lg font-bold text-navy">{r.name}</span>
@@ -191,24 +189,23 @@ export function ReviewCarousel({ reviews, label }: { reviews: Review[]; label: s
         <p className="ml-1 font-heading text-sm font-semibold tracking-widest text-white/85" aria-hidden="true">
           {String(index + 1).padStart(2, "0")} <span className="text-white/50">/ {String(n).padStart(2, "0")}</span>
         </p>
-        <ul className="ml-auto hidden items-center -space-x-2.5 lg:flex">
-          {reviews.map((r, i) => (
-            <li key={r.name}>
-              <button
-                type="button"
-                onClick={() => go(i, true)}
-                aria-label={`Show review by ${r.name}`}
-                aria-current={i === index ? "true" : undefined}
-                className={`block rounded-full ring-2 transition-transform duration-300 ${
-                  i === index ? "relative z-10 scale-125 ring-amber-400" : "ring-navy hover:z-10 hover:scale-110"
-                }`}
-              >
-                <Avatar name={r.name} size="h-8 w-8 text-xs" />
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
+      {/* Reviewer avatars: real, non-overlapping tap targets (32px with gaps) */}
+      <ul className="mt-4 hidden flex-wrap justify-end gap-1.5 lg:flex">
+        {reviews.map((r, i) => (
+          <li key={r.name}>
+            <button
+              type="button"
+              onClick={() => go(i, true)}
+              aria-label={`Show review by ${r.name}`}
+              aria-current={i === index ? "true" : undefined}
+              className={`dot ${i === index ? "ring-amber-400 ring-offset-2 ring-offset-navy" : "ring-transparent hover:ring-white/60"}`}
+            >
+              <Avatar name={r.name} size="h-8 w-8 text-xs" />
+            </button>
+          </li>
+        ))}
+      </ul>
       <p className="sr-only" aria-live="polite">
         {announce}
       </p>
