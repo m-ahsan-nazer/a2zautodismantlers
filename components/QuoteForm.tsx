@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { EMPTY_QUOTE, isSpam, validateQuote, type QuoteErrors, type QuoteInput } from "@/lib/validate";
 import { site } from "@/lib/site";
+import { trackLead } from "@/lib/analytics";
 
 const ENDPOINT = process.env.NEXT_PUBLIC_QUOTE_ENDPOINT ?? "";
 
@@ -54,6 +55,7 @@ export function QuoteForm({ idPrefix, heading, headingLevel = 2 }: { idPrefix: s
       });
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
+      trackLead(window.location.pathname);
       setStatus("sent");
     } catch {
       setStatus("error");

@@ -1,10 +1,72 @@
 [
-  { "source": "/cash-for-4wds/", "target": "/cash-for-cars/", "status": "301" },
-  { "source": "/cash-for-trucks/", "target": "/cash-for-cars/#cash-for-trucks", "status": "301" },
-  { "source": "/locations/", "target": "/cash-for-cars/", "status": "301" },
-  { "source": "/used-auto-parts/", "target": "/", "status": "301" },
-  { "source": "/category/uncategorized/", "target": "/blog/", "status": "301" },
-  { "source": "/author/ahsan_dev/", "target": "/blog/", "status": "301" },
-  { "source": "https://a2zautodismantlers.nz", "target": "https://www.a2zautodismantlers.nz", "status": "301" },
-  { "source": "/<*>", "target": "/404.html", "status": "404-200" }
+  {
+    "source": "/cash-for-4wds/",
+    "target": "/cash-for-cars/",
+    "status": "301"
+  },
+  {
+    "source": "/cash-for-trucks/",
+    "target": "/cash-for-cars/#cash-for-trucks",
+    "status": "301"
+  },
+  {
+    "source": "/locations/",
+    "target": "/cash-for-cars/",
+    "status": "301"
+  },
+  {
+    "source": "/used-auto-parts/",
+    "target": "/",
+    "status": "301"
+  },
+  {
+    "source": "/category/uncategorized/",
+    "target": "/blog/",
+    "status": "301"
+  },
+  {
+    "source": "/author/ahsan_dev/",
+    "target": "/blog/",
+    "status": "301"
+  },
+  {
+    "source": "https://a2zautodismantlers.nz",
+    "target": "https://www.a2zautodismantlers.nz",
+    "status": "301"
+  },
+  {
+    "source": "/sitemap_index.xml",
+    "target": "/sitemap.xml",
+    "status": "301"
+  },
+  {
+    "source": "/page-sitemap.xml",
+    "target": "/sitemap.xml",
+    "status": "301"
+  },
+  {
+    "source": "/post-sitemap.xml",
+    "target": "/sitemap.xml",
+    "status": "301"
+  },
+  {
+    "source": "/category-sitemap.xml",
+    "target": "/sitemap.xml",
+    "status": "301"
+  },
+  {
+    "source": "/wp-sitemap.xml",
+    "target": "/sitemap.xml",
+    "status": "301"
+  },
+  {
+    "source": "/feed/",
+    "target": "/blog/",
+    "status": "301"
+  },
+  {
+    "source": "/<*>",
+    "target": "/404.html",
+    "status": "404-200"
+  }
 ]

@@ -33,7 +33,15 @@ Next.js 16 static export on AWS Amplify (platform WEB). SEO and Lighthouse first
 - Quote form keeps the WordPress fields (Contact Number, License Plate Number, Address, Email,
   Message) and posts JSON to `NEXT_PUBLIC_QUOTE_ENDPOINT` (Lambda + SES, `infra/lambda/quote-form`).
   If unset, the form shows an error with the phone number. It never fakes success.
-- Google Ads tag `AW-761452231` (from WordPress) loads only if `NEXT_PUBLIC_GOOGLE_ADS_ID` is set.
+- Google tag: WordPress (Site Kit) loads only `AW-761452231` (GA4 presumably a destination of that
+  tag) and fires gtag event `contact` on Contact Form 7 success, which Ads conversions likely count.
+  New site (`lib/analytics.ts`, env vars in `.env.example`): same tag, same `contact` event on quote
+  success (+ GA4 `generate_lead`), `phone_call_click` on tel: links, optional direct conversion labels.
+  Nothing loads until `NEXT_PUBLIC_GOOGLE_ADS_ID` is set. Enhanced conversions deliberately NOT sent
+  (privacy policy says customer data isn't passed to other companies).
+- Search Console: verification meta via `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, or drop a
+  googleXXXX.html file in `public/`. WordPress sitemap URLs (sitemap_index.xml etc.) 301 to
+  /sitemap.xml via `infra/amplify-redirects.json`.
 
 ## Privacy rules (customer enquiry emails)
 - Customer emails were supplied once, read via a redacted extract, turned into anonymised
